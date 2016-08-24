@@ -13,8 +13,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    daywidget.cpp \
+    calender.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    daywidget.h \
+    calender.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    daywidget.ui \
+    calender.ui
+
+CONFIG += c++11
