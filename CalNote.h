@@ -3,10 +3,10 @@
 
 #include "calitem.h"
 
-class CalNote: public CalItem
+class CalNote: public CalOneDayItem
 {
 public:
-	CalNote (const QString& note);
+	CalNote (const QString& note, const QDate& date);
 private:
 	QString note;
 };

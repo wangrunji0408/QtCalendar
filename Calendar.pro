@@ -14,22 +14,24 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    daywidget.cpp \
-    calender.cpp \
-    calendarmanager.cpp \
-    calevent.cpp \
-    calfile.cpp \
-    calnote.cpp \
-    calitem.cpp
+    ICalManager.cpp \
+    CalManager.cpp \
+    CalItem.cpp \
+    CalFile.cpp \
+    CalEvent.cpp \
+    CalNote.cpp \
+    DayWidget.cpp \
+    Calender.cpp
 
 HEADERS  += mainwindow.h \
-    daywidget.h \
     calender.h \
-    calendarmanager.h \
-    calevent.h \
-    calfile.h \
-    calnote.h \
-    calitem.h
+    ICalManager.h \
+    CalManager.h \
+    CalEvent.h \
+    CalFile.h \
+    CalItem.h \
+    CalNote.h \
+    DayWidget.h
 
 FORMS    += mainwindow.ui \
     daywidget.ui \

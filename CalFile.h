@@ -5,13 +5,12 @@
 #include <QFileInfo>
 #include <QDate>
 
-class CalFile: public CalItem
+class CalFile: public CalOneDayItem
 {
 public:
-	CalFile (QFileInfo fileInfo, QDate date);
+	CalFile (QString filePath, QDate date);
 private:
-	QFileInfo	fileInfo;
-	QDate		date;
+	QString		filePath;
 };
 
 #endif // CALFILE_H
