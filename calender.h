@@ -40,7 +40,7 @@ private:
 	int year, month;
 	DayWidget*	dayWidget[5][7];
 	QLabel*		weekdayLabel[7];
-	CalManager* calManager;
+	ICalManager* calManager;
 };
 
 #endif // CALENDER_H

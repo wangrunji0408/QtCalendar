@@ -35,6 +35,7 @@ void Calender::init()
 			ui->gridLayout_2->addWidget(dayWidget[i][j], i+1, j);
 		}
 	}
+	calManager = new CalManager;
 }
 
 void Calender::update()
@@ -54,7 +55,7 @@ void Calender::update()
 		{
 			auto& w = dayWidget[i][j];
 			w->setDate(date);
-			w->
+			w->setItemList(calManager->getItemListInDate(date));
 			date = date.addDays(1);
 		}
 }
