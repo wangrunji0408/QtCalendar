@@ -4,25 +4,22 @@
 #include <QTime>
 #include <QDate>
 #include <QVector>
+#include <QColor>
 
-class CalItem
+struct CalItem
 {
 public:
-	CalItem ();
-	CalItem (QTime createTime);
+	QDateTime	createTime	= QDateTime::currentDateTime();
+	QColor		color		= Qt::red;
+public:
 	virtual bool inDate (QDate date) const = 0;
 	virtual QVector<QDate> getDateList () const = 0;
-protected:
-	QTime createTime;
 };
 
-class CalOneDayItem: public CalItem
+struct CalOneDayItem: public CalItem
 {
-protected:
-	QDate date;
 public:
-	CalOneDayItem (QDate date);
-	QDate getDate () const;
+	QDate date;
 
 	// CalItem interface
 public:

@@ -1,14 +1,4 @@
-#include "calitem.h"
-
-CalItem::CalItem()
-{
-	createTime = QTime::currentTime();
-}
-
-CalOneDayItem::CalOneDayItem(QDate date)
-{
-	this->date = date;
-}
+#include "CalItem.h"
 
 bool CalOneDayItem::inDate(QDate date) const
 {

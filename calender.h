@@ -3,7 +3,8 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <daywidget.h>
+#include <DayWidget.h>
+#include <CalManager.h>
 
 namespace Ui {
 class Calender;
@@ -39,6 +40,7 @@ private:
 	int year, month;
 	DayWidget*	dayWidget[5][7];
 	QLabel*		weekdayLabel[7];
+	CalManager* calManager;
 };
 
 #endif // CALENDER_H

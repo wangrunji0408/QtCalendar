@@ -1,6 +1,6 @@
 #include "calender.h"
 #include "ui_calender.h"
-#include "daywidget.h"
+#include "DayWidget.h"
 #include <qdebug>
 
 Calender::Calender(QWidget *parent) :
@@ -52,7 +52,9 @@ void Calender::update()
 	for(int i=0; i<5; ++i)
 		for(int j=0; j<7; ++j)
 		{
-			dayWidget[i][j]->setDate(date);
+			auto& w = dayWidget[i][j];
+			w->setDate(date);
+			w->
 			date = date.addDays(1);
 		}
 }

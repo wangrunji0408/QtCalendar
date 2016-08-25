@@ -33,7 +33,7 @@ void CalManager::load()
 QVector<const CalItem *> CalManager::getItemListInDate(QDate date) const
 {
 	QVector<const CalItem *> list;
-	if(dateToItemSet.contains(date) == 0)
+	if(dateToItemSet.contains(date) == false)
 		return list;
 	for(auto item: dateToItemSet[date])
 		list.append(item);

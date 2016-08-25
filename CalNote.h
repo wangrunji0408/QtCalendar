@@ -1,7 +1,7 @@
 #ifndef CALNOTE_H
 #define CALNOTE_H
 
-#include "calitem.h"
+#include "CalItem.h"
 
 class CalNote: public CalOneDayItem
 {

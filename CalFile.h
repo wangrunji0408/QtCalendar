@@ -1,15 +1,12 @@
 #ifndef CALFILE_H
 #define CALFILE_H
 
-#include "calitem.h"
+#include "CalItem.h"
 #include <QFileInfo>
 #include <QDate>
 
-class CalFile: public CalOneDayItem
+struct CalFile: public CalOneDayItem
 {
-public:
-	CalFile (QString filePath, QDate date);
-private:
 	QString		filePath;
 };
 

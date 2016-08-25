@@ -1,4 +1,4 @@
-#include "daywidget.h"
+#include "DayWidget.h"
 #include "ui_daywidget.h"
 #include <qdebug>
 #include <QTextStream>
@@ -8,6 +8,7 @@ DayWidget::DayWidget(QWidget *parent) :
 	ui(new Ui::DayWidget)
 {
 	ui->setupUi(this);
+	ui->lunarLabel->setVisible(false);
 }
 
 DayWidget::~DayWidget()
@@ -19,5 +20,9 @@ void DayWidget::setDate(const QDate& _date)
 {
 	date = _date;
 	ui->dayLabel->setText(QString::number(date.day()));
-	ui->lunarLabel->setVisible(false);
+}
+
+void DayWidget::setItemList(QVector<const CalItem*> const& _itemList)
+{
+	itemList = _itemList;
 }
