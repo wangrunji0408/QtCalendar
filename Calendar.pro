@@ -15,11 +15,21 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     daywidget.cpp \
-    calender.cpp
+    calender.cpp \
+    calendarmanager.cpp \
+    calevent.cpp \
+    calfile.cpp \
+    calnote.cpp \
+    calitem.cpp
 
 HEADERS  += mainwindow.h \
     daywidget.h \
-    calender.h
+    calender.h \
+    calendarmanager.h \
+    calevent.h \
+    calfile.h \
+    calnote.h \
+    calitem.h
 
 FORMS    += mainwindow.ui \
     daywidget.ui \
