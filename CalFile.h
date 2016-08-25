@@ -8,6 +8,7 @@
 struct CalFile: public CalOneDayItem
 {
 	QString		filePath;
+	CalFile () {type = File;}
 };
 
 #endif // CALFILE_H

@@ -4,7 +4,8 @@
 #include <QWidget>
 #include <QDate>
 #include <QMouseEvent>
-#include "CalItem.h"
+#include "calitemall.h"
+#include "DayInfoWidget.h"
 
 namespace Ui {
 class DayWidget;
@@ -19,6 +20,7 @@ public:
 	~DayWidget();
 	void setDate (const QDate& _date);
 	void setItemList (QVector<const CalItem*> const& _itemList);
+	void mouseReleaseEvent(QMouseEvent* e) override;
 
 private:
 	Ui::DayWidget *ui;

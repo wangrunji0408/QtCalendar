@@ -9,8 +9,14 @@
 struct CalItem
 {
 public:
+	enum CalItemType
+	{
+		Item = 0, Event = 1, File = 2, Note = 3
+	};
+
 	QDateTime	createTime	= QDateTime::currentDateTime();
 	QColor		color		= Qt::red;
+	CalItemType type		= Item;
 public:
 	virtual bool inDate (QDate date) const = 0;
 	virtual QVector<QDate> getDateList () const = 0;
@@ -26,5 +32,7 @@ public:
 	virtual bool inDate(QDate date) const override;
 	virtual QVector<QDate> getDateList() const override;
 };
+
+
 
 #endif // CALITEM_H

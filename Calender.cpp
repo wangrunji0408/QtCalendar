@@ -1,6 +1,7 @@
 #include "calender.h"
 #include "ui_calender.h"
 #include "DayWidget.h"
+#include "EventSettingDialog.h"
 #include <qdebug>
 
 Calender::Calender(QWidget *parent) :
@@ -104,4 +105,14 @@ void Calender::on_goLeftButton_clicked()
 void Calender::on_goRightButton_clicked()
 {
 	nextMonth();
+}
+
+void Calender::on_addItemButton_clicked()
+{
+	EventSettingDialog dialog;
+	dialog.show();
+	dialog.exec();
+	if(dialog.result() == QDialog::Rejected)
+		return;
+	calManager->addItem(dialog.getEvent());
 }

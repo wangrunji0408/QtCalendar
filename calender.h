@@ -27,6 +27,7 @@ private slots:
 	void on_goTodayButton_clicked();
 	void on_goLeftButton_clicked();
 	void on_goRightButton_clicked();
+	void on_addItemButton_clicked();
 
 private:
 	QDate getFirstDayOfMonth ();

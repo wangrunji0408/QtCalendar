@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     CalNote.cpp \
     DayWidget.cpp \
     Calender.cpp \
-    EventSettingDialog.cpp
+    EventSettingDialog.cpp \
+    DayInfoWidget.cpp
 
 HEADERS  += mainwindow.h \
     calender.h \
@@ -33,11 +34,14 @@ HEADERS  += mainwindow.h \
     CalItem.h \
     CalNote.h \
     DayWidget.h \
-    EventSettingDialog.h
+    EventSettingDialog.h \
+    DayInfoWidget.h \
+    calitemall.h
 
 FORMS    += mainwindow.ui \
     daywidget.ui \
     calender.ui \
-    EventSettingDialog.ui
+    EventSettingDialog.ui \
+    DayInfoWidget.ui
 
 CONFIG += c++11

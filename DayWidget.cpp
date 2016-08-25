@@ -26,3 +26,10 @@ void DayWidget::setItemList(QVector<const CalItem*> const& _itemList)
 {
 	itemList = _itemList;
 }
+
+void DayWidget::mouseReleaseEvent(QMouseEvent *e)
+{
+	qDebug() << "Mouse Release: " << date;
+	DayInfoWidget dayInfo(date, itemList, nullptr);
+	dayInfo.show();
+}

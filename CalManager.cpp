@@ -1,4 +1,5 @@
 #include "CalManager.h"
+#include <QDebug>
 
 CalManager::CalManager()
 {
@@ -7,6 +8,7 @@ CalManager::CalManager()
 
 void CalManager::addItem(const CalItem *item)
 {
+	qDebug() << "AddItem at " << QDateTime::currentDateTime().toString();
 	for(QDate date: item->getDateList())
 		dateToItemSet[date].insert(item);
 }

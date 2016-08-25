@@ -20,12 +20,16 @@ public:
 	int			repeatTimes = 1;	// -1: +oo
 	QSet<int>	deletedRepeatIndex;
 
+	static const int PRIORITY_MAX = 3;
+
 	// CalItem interface
 public:
+	CalEvent () {type = Event;}
 	virtual bool inDate (QDate date) const override;
 	virtual QVector<QDate> getDateList() const override;
 	void delRepeatIndex (int index);
 	void delRepeatIndexAfter (int index);
+	int error () const;
 
 private:
 	void nextDate (QDateTime &t1, QDateTime &t2) const;

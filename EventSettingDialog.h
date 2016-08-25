@@ -18,8 +18,10 @@ public:
 	~EventSettingDialog();
 	void setEvent ();
 	CalEvent* getEvent () const;
+
 private:
 	void showColor (QColor color);
+	void accept () override;
 
 private slots:
 	void on_colorButton_clicked();

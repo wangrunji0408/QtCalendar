@@ -1,6 +1,8 @@
 #include "EventSettingDialog.h"
 #include "ui_EventSettingDialog.h"
 #include <QColorDialog>
+#include <QMessageBox>
+#include <QDebug>
 
 EventSettingDialog::EventSettingDialog(CalEvent *_event, QWidget *parent) :
 	QDialog(parent),
@@ -60,6 +62,14 @@ void EventSettingDialog::showColor(QColor color)
 	pal.setBrush(QPalette::Background, QBrush(color));
 	ui->colorShow->setAutoFillBackground(true);
 	ui->colorShow->setPalette(pal);
+}
+
+void EventSettingDialog::accept()
+{
+	if(getEvent()->error())
+		QMessageBox::warning(this, "参数无效", "参数无效");
+	else
+		QDialog::accept();
 }
 
 void EventSettingDialog::on_colorButton_clicked()

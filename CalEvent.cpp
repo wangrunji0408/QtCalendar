@@ -41,6 +41,19 @@ void CalEvent::delRepeatIndexAfter(int index)
 	repeatTimes = index;
 }
 
+int CalEvent::error() const
+{
+	if(name.length() == 0)
+		return 1;
+	if(tBegin >= tEnd)
+		return 3;
+	if(priority > PRIORITY_MAX || priority < 0)
+		return 5;
+	if(repeatTimes <= 0)
+		return 6;
+	return 0;
+}
+
 void CalEvent::nextDate(QDateTime &t1, QDateTime &t2) const
 {
 	switch(repeatCycle)
@@ -62,7 +75,7 @@ void CalEvent::nextDate(QDateTime &t1, QDateTime &t2) const
 		t2 = t2.addYears(1);
 		break;
 	case None:
-		throw std::runtime_error("repeatCycle == None. Can't go next.");
+		break;
 	default:
 		throw std::runtime_error("Error in event's datetime increasing.");
 	}
