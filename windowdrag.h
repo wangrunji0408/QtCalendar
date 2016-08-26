@@ -19,7 +19,7 @@ void mouseMoveEvent(QMouseEvent *event) override\
 	if(!drag)	return;\
 	this->move(windowPos0 + event->globalPos() - mousePos0);\
 }\
-void mouseReleaseEvent(QMouseEvent *event) override\
+void mouseReleaseEvent(QMouseEvent *) override\
 {\
 	drag = false;\
 }

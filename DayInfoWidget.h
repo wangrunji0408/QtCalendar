@@ -14,13 +14,12 @@ class DayInfoWidget;
 class DayInfoWidget : public QWidget
 {
 	Q_OBJECT
+	WINDOW_DRAG
 
 public:
 	explicit DayInfoWidget(const QDate &_date, ICalManager* _calManager, QWidget *parent = 0);
 	~DayInfoWidget();
 	void update ();
-
-	WINDOW_DRAG
 
 private:
 	Ui::DayInfoWidget *ui;

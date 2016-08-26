@@ -15,6 +15,7 @@ class Calender;
 class Calender : public QWidget
 {
 	Q_OBJECT
+	WINDOW_DRAG
 
 public:
 	explicit Calender(QWidget *parent = 0);
@@ -40,8 +41,6 @@ private:
 	QDate getFirstDayOfMonth ();
 	void init ();
 	void update ();		// 根据 yearAndMonth 更新 dayWidget[][]
-
-	WINDOW_DRAG
 
 private:
 	Ui::Calender *ui;
