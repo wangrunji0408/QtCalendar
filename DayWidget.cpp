@@ -42,8 +42,7 @@ void DayWidget::update()
 void DayWidget::mouseReleaseEvent(QMouseEvent *e)
 {
 	qDebug() << "Mouse Release: " << date;
-	DayInfoWidget dayInfo(date, itemList, nullptr);
-	dayInfo.show();
+	emit showDayInfoWidget(date);
 	e->accept();
 }
 

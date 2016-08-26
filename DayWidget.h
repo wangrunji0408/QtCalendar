@@ -27,6 +27,9 @@ public:
 	void dragEnterEvent(QDragEnterEvent *event) override;
 	void dropEvent(QDropEvent *event) override;
 
+signals:
+	void showDayInfoWidget (QDate);
+
 private:
 	Ui::DayWidget *ui;
 	QDate date;

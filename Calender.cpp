@@ -2,6 +2,7 @@
 #include "ui_calender.h"
 #include "DayWidget.h"
 #include "EventSettingDialog.h"
+#include "DayInfoWidget.h"
 #include <QDebug>
 #include <QPalette>
 #include <QMimeData>
@@ -12,6 +13,7 @@ Calender::Calender(QWidget *parent) :
 	ui(new Ui::Calender)
 {
 	ui->setupUi(this);
+	setWindowFlags(Qt::FramelessWindowHint);
 	init();
 	goToday();
 }
@@ -38,6 +40,8 @@ void Calender::init()
 		{
 			dayWidget[i][j] = new DayWidget(calManager, this);
 			ui->gridLayout_2->addWidget(dayWidget[i][j], i+1, j);
+			connect(dayWidget[i][j], SIGNAL(showDayInfoWidget (QDate)),
+					this, SLOT(showDayInfoWidget (QDate)));
 		}
 	}
 }
@@ -50,7 +54,7 @@ void Calender::update()
 	for(int j=0; j<7; ++j)
 	{
 		int weekday = (firstDayOfWeek-1 + j) % 7 + 1;
-		weekdayLabel[j]->setText(QString::number(weekday));
+		weekdayLabel[j]->setText(QDate::shortDayName(weekday));
 	}
 
 	QDate date = getFirstDayOfMonth();
@@ -130,4 +134,13 @@ void Calender::on_addItemButton_clicked()
 	if(dialog.result() == QDialog::Rejected)
 		return;
 	calManager->addItem(dialog.getEvent());
+}
+
+void Calender::showDayInfoWidget(QDate date)
+{
+	static DayInfoWidget* dayInfo = nullptr;
+	if(dayInfo != nullptr)
+		dayInfo->close();
+	dayInfo = new DayInfoWidget(date, calManager);
+	dayInfo->show();
 }

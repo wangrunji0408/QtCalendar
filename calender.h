@@ -6,6 +6,7 @@
 #include <DayWidget.h>
 #include <CalManager.h>
 #include <QDragEnterEvent>
+#include "windowdrag.h"
 
 namespace Ui {
 class Calender;
@@ -32,11 +33,15 @@ private slots:
 	void on_goRightButton_clicked();
 	void on_addItemButton_clicked();
 
+public slots:
+	void showDayInfoWidget (QDate date);
+
 private:
 	QDate getFirstDayOfMonth ();
 	void init ();
 	void update ();		// 根据 yearAndMonth 更新 dayWidget[][]
 
+	WINDOW_DRAG
 
 private:
 	Ui::Calender *ui;

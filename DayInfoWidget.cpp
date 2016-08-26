@@ -4,15 +4,15 @@
 #include <QListWidgetItem>
 #include <QDebug>
 
-DayInfoWidget::DayInfoWidget(const QDate &_date, const QVector<const CalItem *> &itemList, QWidget *parent):
+DayInfoWidget::DayInfoWidget(const QDate &_date, ICalManager *_calManager, QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::DayInfoWidget)
 {
 	ui->setupUi(this);
+	setWindowFlags(Qt::FramelessWindowHint);
 	date = _date;
-	ui->dateLabel->setText(date.toString("yyyy年M月d日"));
-	setItemList(itemList);
-	qDebug() << "DayInfoWidget Construct End: " << date;
+	calManager = _calManager;
+	update();
 }
 
 DayInfoWidget::~DayInfoWidget()
@@ -20,9 +20,10 @@ DayInfoWidget::~DayInfoWidget()
 	delete ui;
 }
 
-void DayInfoWidget::setItemList(const QVector<const CalItem *> &itemList)
+void DayInfoWidget::update ()
 {
-	for(auto item: itemList)
+	ui->dateLabel->setText(date.toString("yyyy年M月d日"));
+	for(auto item: calManager->getItemListInDate(date))
 	{
 		if(item->type() == CalItem::Event)
 		{
@@ -32,11 +33,13 @@ void DayInfoWidget::setItemList(const QVector<const CalItem *> &itemList)
 		}
 		else if(item->type() == CalItem::Note)
 		{
-			ui->itemList->addItem("Note: ???");
+			auto note = (const CalNote*)item;
+			ui->itemList->addItem("Note: " + note->note);
 		}
 		else if(item->type() == CalItem::File)
 		{
-			ui->itemList->addItem("File: ???");
+			auto file = (const CalFile*)item;
+			ui->itemList->addItem("File: " + file->fileInfo.fileName());
 		}
 	}
 }
