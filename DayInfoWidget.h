@@ -20,6 +20,7 @@ public:
 	explicit DayInfoWidget(const QDate &_date, ICalManager* _calManager, QWidget *parent = 0);
 	~DayInfoWidget();
 	void update ();
+	void keyPressEvent(QKeyEvent *ke) override;
 
 private:
 	Ui::DayInfoWidget *ui;

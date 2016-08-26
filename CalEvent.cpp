@@ -2,15 +2,16 @@
 
 bool CalEvent::inDate(QDate date) const
 {
-	QDateTime t1 = tBegin, t2 = tEnd;
-	for(int i=0; i<repeatTimes; ++i)
-	{
-		if(!deletedRepeatIndex.contains(i)
-			&& t1.date() <= date && t2.date() >= date)
-			return true;
-		nextDate(t1, t2);
-	}
-	return false;
+//	QDateTime t1 = tBegin, t2 = tEnd;
+//	for(int i=0; i<repeatTimes; ++i)
+//	{
+//		if(!deletedRepeatIndex.contains(i)
+//			&& t1.date() <= date && t2.date() >= date)
+//			return true;
+//		nextDate(t1, t2);
+//	}
+//	return false;
+	return getRepeatIndex(date) != -1;
 }
 
 QVector<QDate> CalEvent::getDateList() const
@@ -25,6 +26,24 @@ QVector<QDate> CalEvent::getDateList() const
 		nextDate(t1, t2);
 	}
 	return dateList;
+}
+
+bool CalEvent::crossDate() const
+{
+	return tBegin.date() != tEnd.date();
+}
+
+int CalEvent::getRepeatIndex(QDate date) const
+{
+	QDateTime t1 = tBegin, t2 = tEnd;
+	for(int i=0; i<repeatTimes; ++i)
+	{
+		if(!deletedRepeatIndex.contains(i)
+			&& t1.date() <= date && t2.date() >= date)
+			return i;
+		nextDate(t1, t2);
+	}
+	return -1;
 }
 
 void CalEvent::delRepeatIndex(int index)

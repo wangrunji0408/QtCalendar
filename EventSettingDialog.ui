@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>214</width>
-    <height>346</height>
+    <width>229</width>
+    <height>418</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>编辑事件</string>
+   <string>新建事件</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>

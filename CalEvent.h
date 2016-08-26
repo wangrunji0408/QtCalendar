@@ -27,6 +27,8 @@ public:
 	virtual CalItemType type () const override {return Event;};
 	virtual bool inDate (QDate date) const override;
 	virtual QVector<QDate> getDateList() const override;
+	bool crossDate () const;
+	int getRepeatIndex (QDate date) const;
 	void delRepeatIndex (int index);
 	void delRepeatIndexAfter (int index);
 	int error () const;

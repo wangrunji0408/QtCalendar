@@ -23,7 +23,9 @@ SOURCES += main.cpp\
     DayWidget.cpp \
     Calender.cpp \
     EventSettingDialog.cpp \
-    DayInfoWidget.cpp
+    DayInfoWidget.cpp \
+    listitemevent.cpp \
+    deleventdialog.cpp
 
 HEADERS  += mainwindow.h \
     calender.h \
@@ -37,12 +39,23 @@ HEADERS  += mainwindow.h \
     EventSettingDialog.h \
     DayInfoWidget.h \
     calitemall.h \
-    windowdrag.h
+    windowdrag.h \
+    listitemevent.h \
+    deleventdialog.h
 
 FORMS    += mainwindow.ui \
     daywidget.ui \
     calender.ui \
     EventSettingDialog.ui \
-    DayInfoWidget.ui
+    DayInfoWidget.ui \
+    listitemevent.ui \
+    deleventdialog.ui
 
 CONFIG += c++11
+
+DISTFILES += \
+    ../../../../Downloads/event.png \
+    ../../../../Downloads/file.png
+
+RESOURCES += \
+    res.qrc

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>80</width>
-    <height>80</height>
+    <width>123</width>
+    <height>105</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -71,11 +71,45 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>统计</string>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>0</number>
      </property>
-    </widget>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="dotLabel_1">
+       <property name="text">
+        <string>●</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="dotLabel_2">
+       <property name="text">
+        <string>●</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="dotLabel_3">
+       <property name="text">
+        <string>●</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <spacer name="verticalSpacer">

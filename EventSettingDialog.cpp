@@ -4,20 +4,20 @@
 #include <QMessageBox>
 #include <QDebug>
 
-EventSettingDialog::EventSettingDialog(CalEvent *_event, QWidget *parent) :
+EventSettingDialog::EventSettingDialog(const CalEvent *_event, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::EventSettingDialog)
 {
 	ui->setupUi(this);
+	event = new CalEvent;
 	if(_event == nullptr)
 	{
-		event = new CalEvent;
 		event->tBegin = QDateTime::currentDateTime();
 		event->tEnd = event->tBegin.addSecs(3600);
 	}
 	else
 	{
-		event = _event;
+		*event = *_event;
 	}
 	setEvent();
 }
@@ -42,7 +42,7 @@ void EventSettingDialog::setEvent()
 	ui->createTime->setText(event->createTime.toString("yyyy/M/d HH:mm"));
 }
 
-CalEvent* EventSettingDialog::getEvent() const
+const CalEvent* EventSettingDialog::getEvent() const
 {
 	event->name = ui->name->text();
 	event->address = ui->address->text();

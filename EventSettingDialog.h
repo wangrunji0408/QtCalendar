@@ -14,14 +14,14 @@ class EventSettingDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit EventSettingDialog (CalEvent* event = nullptr, QWidget *parent = 0);
+	explicit EventSettingDialog (const CalEvent* event = nullptr, QWidget *parent = 0);
 	~EventSettingDialog();
-	void setEvent ();
-	CalEvent* getEvent () const;
+	const CalEvent* getEvent () const;
 
 private:
 	void showColor (QColor color);
 	void accept () override;
+	void setEvent ();
 
 private slots:
 	void on_colorButton_clicked();

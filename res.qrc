@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="event">icon/event.png</file>
+        <file alias="file">icon/file.png</file>
+        <file alias="note">icon/note.png</file>
+    </qresource>
+</RCC>
