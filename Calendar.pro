@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     DayWidget.cpp \
     Calender.cpp \
     EventSettingDialog.cpp \
-    DayInfoWidget.cpp
+    DayInfoWidget.cpp \
+    caluser.cpp
 
 HEADERS  += mainwindow.h \
     calender.h \
@@ -36,7 +37,8 @@ HEADERS  += mainwindow.h \
     DayWidget.h \
     EventSettingDialog.h \
     DayInfoWidget.h \
-    calitemall.h
+    calitemall.h \
+    caluser.h
 
 FORMS    += mainwindow.ui \
     daywidget.ui \

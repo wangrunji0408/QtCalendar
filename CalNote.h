@@ -7,6 +7,7 @@ class CalNote: public CalOneDayItem
 {
 public:
 	CalNote (const QString& note, const QDate& date);
+	virtual CalItemType type () const override {return Note;};
 private:
 	QString note;
 };

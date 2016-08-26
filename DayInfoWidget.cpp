@@ -10,6 +10,7 @@ DayInfoWidget::DayInfoWidget(const QDate &_date, const QVector<const CalItem *> 
 {
 	ui->setupUi(this);
 	date = _date;
+	ui->dateLabel->setText(date.toString("yyyy年M月d日"));
 	setItemList(itemList);
 	qDebug() << "DayInfoWidget Construct End: " << date;
 }
@@ -23,17 +24,17 @@ void DayInfoWidget::setItemList(const QVector<const CalItem *> &itemList)
 {
 	for(auto item: itemList)
 	{
-		if(item->type == CalItem::Event)
+		if(item->type() == CalItem::Event)
 		{
 			auto event = (const CalEvent*)item;
 			auto wi = new QListWidgetItem (QString("Event: ") + event->name);
 			ui->itemList->addItem(wi);
 		}
-		else if(item->type == CalItem::Note)
+		else if(item->type() == CalItem::Note)
 		{
 			ui->itemList->addItem("Note: ???");
 		}
-		else if(item->type == CalItem::File)
+		else if(item->type() == CalItem::File)
 		{
 			ui->itemList->addItem("File: ???");
 		}

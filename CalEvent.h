@@ -24,7 +24,7 @@ public:
 
 	// CalItem interface
 public:
-	CalEvent () {type = Event;}
+	virtual CalItemType type () const override {return Event;};
 	virtual bool inDate (QDate date) const override;
 	virtual QVector<QDate> getDateList() const override;
 	void delRepeatIndex (int index);

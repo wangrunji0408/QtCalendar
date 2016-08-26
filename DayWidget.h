@@ -4,8 +4,11 @@
 #include <QWidget>
 #include <QDate>
 #include <QMouseEvent>
+#include <QDropEvent>
+#include <QDragEnterEvent>
 #include "calitemall.h"
 #include "DayInfoWidget.h"
+#include "CalManager.h"
 
 namespace Ui {
 class DayWidget;
@@ -16,16 +19,19 @@ class DayWidget : public QWidget
 	Q_OBJECT
 
 public:
-	explicit DayWidget(QWidget *parent = 0);
+	explicit DayWidget(ICalManager* _calManager, QWidget *parent = 0);
 	~DayWidget();
 	void setDate (const QDate& _date);
-	void setItemList (QVector<const CalItem*> const& _itemList);
+	void update ();
 	void mouseReleaseEvent(QMouseEvent* e) override;
+	void dragEnterEvent(QDragEnterEvent *event) override;
+	void dropEvent(QDropEvent *event) override;
 
 private:
 	Ui::DayWidget *ui;
 	QDate date;
 	QVector<const CalItem*> itemList;
+	ICalManager* calManager;
 };
 
 #endif // DAYWIDGET_H

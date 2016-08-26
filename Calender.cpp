@@ -2,7 +2,10 @@
 #include "ui_calender.h"
 #include "DayWidget.h"
 #include "EventSettingDialog.h"
-#include <qdebug>
+#include <QDebug>
+#include <QPalette>
+#include <QMimeData>
+#include <QMessageBox>
 
 Calender::Calender(QWidget *parent) :
 	QWidget(parent),
@@ -20,6 +23,7 @@ Calender::~Calender()
 
 void Calender::init()
 {
+	calManager = new CalManager;
 	firstDayOfWeek = 7;
 	for(int j=0; j<7; ++j)
 	{
@@ -32,11 +36,10 @@ void Calender::init()
 	{
 		for(int j=0; j<7; ++j)
 		{
-			dayWidget[i][j] = new DayWidget(this);
+			dayWidget[i][j] = new DayWidget(calManager, this);
 			ui->gridLayout_2->addWidget(dayWidget[i][j], i+1, j);
 		}
 	}
-	calManager = new CalManager;
 }
 
 void Calender::update()
@@ -56,7 +59,14 @@ void Calender::update()
 		{
 			auto& w = dayWidget[i][j];
 			w->setDate(date);
-			w->setItemList(calManager->getItemListInDate(date));
+
+//			w->setStyleSheet("background-color: " + calManager->getColor(date).name());
+			QPalette pal = w->palette();
+			pal.setBrush(w->backgroundRole(), calManager->getColor(date));
+			w->setAutoFillBackground(true);
+			w->setPalette(pal);
+
+
 			date = date.addDays(1);
 		}
 }
@@ -74,6 +84,11 @@ void Calender::goToday()
 	year = QDate::currentDate().year();
 	month = QDate::currentDate().month();
 	update();
+}
+
+void Calender::dragEnterEvent(QDragEnterEvent *event)
+{
+	qDebug() << "Calendar::dragEnterEvent()";
 }
 
 void Calender::nextMonth()

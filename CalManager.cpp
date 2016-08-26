@@ -24,8 +24,29 @@ void CalManager::clear()
 	dateToItemSet.clear();
 }
 
+void CalManager::setColor(QDate date, QColor color)
+{
+	dateToColor[date] = color;
+}
+
+QColor CalManager::getColor(QDate date) const
+{
+	if(dateToColor.contains(date))
+		return dateToColor[date];
+	if(date.dayOfWeek() <= 5)
+		return DEFAULT_COLOR_WORKDAY;
+	else
+		return DEFAULT_COLOR_WEEKEND;
+}
+
+QSettings& CalManager::getSettings()
+{
+	return settings;
+}
+
 void CalManager::save()
 {
+//	settings.sync();
 }
 
 void CalManager::load()

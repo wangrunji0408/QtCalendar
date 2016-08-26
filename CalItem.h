@@ -16,10 +16,10 @@ public:
 
 	QDateTime	createTime	= QDateTime::currentDateTime();
 	QColor		color		= Qt::red;
-	CalItemType type		= Item;
 public:
 	virtual bool inDate (QDate date) const = 0;
 	virtual QVector<QDate> getDateList () const = 0;
+	virtual CalItemType type () const = 0;
 };
 
 struct CalOneDayItem: public CalItem

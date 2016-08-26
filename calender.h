@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <DayWidget.h>
 #include <CalManager.h>
+#include <QDragEnterEvent>
 
 namespace Ui {
 class Calender;
@@ -22,6 +23,8 @@ public:
 	void nextMonth ();
 	void lastMonth ();
 	void goToday();
+
+	void dragEnterEvent(QDragEnterEvent *event) override;
 
 private slots:
 	void on_goTodayButton_clicked();
