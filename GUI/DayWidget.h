@@ -6,9 +6,8 @@
 #include <QMouseEvent>
 #include <QDropEvent>
 #include <QDragEnterEvent>
-#include "calitemall.h"
 #include "DayInfoWidget.h"
-#include "CalManager.h"
+#include "../CalManager/CalManager.h"
 
 namespace Ui {
 class DayWidget;

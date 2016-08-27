@@ -2,7 +2,7 @@
 #define SETTINGDIALOG_H
 
 #include <QDialog>
-#include "CalManager.h"
+#include "../../CalManager/CalManager.h"
 
 namespace Ui {
 class SettingDialog;

@@ -3,10 +3,10 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <DayWidget.h>
-#include <CalManager.h>
 #include <QDragEnterEvent>
-#include "windowdrag.h"
+#include "DayWidget.h"
+#include "../CalManager/CalManager.h"
+#include "EventFilter/windowdrageventfilter.h"
 
 namespace Ui {
 class Calender;
@@ -15,7 +15,6 @@ class Calender;
 class Calender : public QWidget
 {
 	Q_OBJECT
-	WINDOW_DRAG
 
 public:
 	explicit Calender(QWidget *parent = 0);
@@ -52,6 +51,7 @@ private:
 	DayWidget*	dayWidget[5][7];
 	QLabel*		weekdayLabel[7];
 	ICalManager* calManager;
+	WindowDragEventFilter windowDrag;
 };
 
 #endif // CALENDER_H

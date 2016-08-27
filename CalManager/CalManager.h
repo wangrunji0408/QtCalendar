@@ -5,7 +5,6 @@
 #include <QMap>
 #include <QSet>
 
-
 class CalManager : public ICalManager
 {
 public:

@@ -3,9 +3,7 @@
 
 #include <QWidget>
 #include <QKeyEvent>
-//#include <QMouseEvent>
-#include "calevent.h"
-#include "CalManager.h"
+#include "../../CalManager/CalManager.h"
 
 namespace Ui {
 class ListItemEvent;
@@ -18,12 +16,12 @@ class ListItemEvent : public QWidget
 public:
 	explicit ListItemEvent(const CalEvent* _event, QDate _date, ICalManager* _calManager, QWidget *parent = 0);
 	~ListItemEvent();
-	const CalEvent* event;
 	void keyPressEvent(QKeyEvent* ke) override;
 	void mouseDoubleClickEvent(QMouseEvent *) override;
 
 private:
 	Ui::ListItemEvent *ui;
+	const CalEvent* event;
 	ICalManager* calManager;
 	QDate date;
 };

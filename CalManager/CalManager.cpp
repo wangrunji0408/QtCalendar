@@ -1,5 +1,4 @@
 #include "CalManager.h"
-#include <QDebug>
 #include <QJsonDocument>
 #include <QFile>
 #include <QTextStream>

@@ -2,10 +2,7 @@
 #define CALEVENT_H
 
 #include "CalItem.h"
-#include <QString>
-#include <QTime>
 #include <QSet>
-#include <QVariant>
 
 class CalEvent: public CalItem
 {

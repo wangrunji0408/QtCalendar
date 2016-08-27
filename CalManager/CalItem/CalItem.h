@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QJsonObject>
 #include <QVariant>
+#include <QDebug>
 
 struct CalItem
 {

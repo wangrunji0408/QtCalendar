@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QColor>
-#include "CalEvent.h"
+#include "../../CalManager/CalManager.h"
 
 namespace Ui {
 class EventSettingDialog;

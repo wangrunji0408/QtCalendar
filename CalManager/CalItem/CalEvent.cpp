@@ -1,5 +1,4 @@
 #include "CalEvent.h"
-#include <QDebug>
 
 bool CalEvent::inDate(QDate date) const
 {

@@ -5,10 +5,9 @@
 #include <QPoint>
 #include <QMap>
 #include <QListWidgetItem>
-#include "calitemall.h"
-#include "CalManager.h"
-#include "windowdrag.h"
-#include "listitemevent.h"
+#include "../CalManager/CalManager.h"
+#include "EventFilter/windowdrageventfilter.h"
+#include "ListItem/listitemevent.h"
 
 namespace Ui {
 class DayInfoWidget;
@@ -17,7 +16,6 @@ class DayInfoWidget;
 class DayInfoWidget : public QWidget
 {
 	Q_OBJECT
-	WINDOW_DRAG
 
 public:
 	explicit DayInfoWidget(const QDate &_date, ICalManager* _calManager, QWidget *parent = 0);
@@ -37,6 +35,7 @@ private:
 	QDate date;
 	ICalManager* calManager;
 	QVector<const CalItem*> itemList;
+	WindowDragEventFilter windowDrag;
 };
 
 #endif // DAYINFOWIDGET_H

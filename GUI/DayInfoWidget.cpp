@@ -3,7 +3,7 @@
 
 #include <QDebug>
 #include <QColorDialog>
-#include "deleventdialog.h"
+#include "Dialog/deleventdialog.h"
 #include "calender.h"
 
 DayInfoWidget::DayInfoWidget(const QDate &_date, ICalManager *_calManager, QWidget *parent):
@@ -12,6 +12,7 @@ DayInfoWidget::DayInfoWidget(const QDate &_date, ICalManager *_calManager, QWidg
 {
 	ui->setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint);
+	QObject::installEventFilter(&windowDrag);
 	date = _date;
 	calManager = _calManager;
 	update();

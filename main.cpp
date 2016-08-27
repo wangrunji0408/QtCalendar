@@ -1,7 +1,6 @@
-#include "mainwindow.h"
-#include "calender.h"
 #include <QApplication>
 #include <QDebug>
+#include "GUI/calender.h"
 
 int main(int argc, char *argv[])
 {

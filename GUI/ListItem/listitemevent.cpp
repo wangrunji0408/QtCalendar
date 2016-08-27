@@ -1,7 +1,7 @@
 #include "listitemevent.h"
 #include "ui_listitemevent.h"
-#include "EventSettingDialog.h"
-#include "deleventdialog.h"
+#include "../Dialog/EventSettingDialog.h"
+#include "../Dialog/deleventdialog.h"
 #include <QDebug>
 
 ListItemEvent::ListItemEvent(const CalEvent *_event, QDate _date, ICalManager *_calManager, QWidget *parent) :

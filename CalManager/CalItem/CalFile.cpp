@@ -1,6 +1,5 @@
 #include "CalFile.h"
 #include <QFile>
-#include <QDebug>
 
 CalFile::CalFile(QString filePath, QDate _date):
 	fileInfo(filePath)

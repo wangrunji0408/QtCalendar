@@ -1,10 +1,9 @@
 #include "calender.h"
 #include "ui_calender.h"
 #include "DayWidget.h"
-#include "EventSettingDialog.h"
 #include "DayInfoWidget.h"
-#include "settingdialog.h"
-#include <QDebug>
+#include "Dialog/settingdialog.h"
+#include "Dialog/EventSettingDialog.h"
 #include <QPalette>
 #include <QMimeData>
 #include <QMessageBox>
@@ -14,7 +13,6 @@ Calender::Calender(QWidget *parent) :
 	ui(new Ui::Calender)
 {
 	ui->setupUi(this);
-	setWindowFlags(Qt::FramelessWindowHint);
 	init();
 	goToday();
 }
@@ -27,6 +25,8 @@ Calender::~Calender()
 
 void Calender::init()
 {
+	setWindowFlags(Qt::FramelessWindowHint);
+	QObject::installEventFilter(&windowDrag);
 	calManager = new CalManager;
 	firstDayOfWeek = 7;
 	for(int j=0; j<7; ++j)
