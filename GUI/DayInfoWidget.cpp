@@ -17,6 +17,7 @@ DayInfoWidget::DayInfoWidget(const QDate &_date, ICalManager *_calManager, QWidg
 	QObject::installEventFilter(&windowDrag);
 	date = _date;
 	calManager = _calManager;
+	connect(this, SIGNAL(changed()), this, SLOT(update()));
 	update();
 }
 
@@ -65,6 +66,7 @@ void DayInfoWidget::keyPressEvent(QKeyEvent *ke)
 	else if(ke->key() == Qt::Key_Delete || ke->key() == Qt::Key_Backspace)
 	{
 		delSelectedItem();
+		emit changed();
 		ke->accept();
 	}
 }
@@ -73,7 +75,7 @@ void DayInfoWidget::on_pushButton_clicked()
 {
 	QColor color =  QColorDialog::getColor(Qt::transparent, this);
 	calManager->setColor(date, color);
-	showColor(color);
+	emit changed();
 }
 
 void DayInfoWidget::showColor(QColor color)
@@ -86,11 +88,11 @@ void DayInfoWidget::showColor(QColor color)
 
 void DayInfoWidget::delSelectedItem()
 {
-	qDebug() << "Press Delete.";
+//	qDebug() << "Press Delete.";
 	int id = ui->itemList->currentRow();
 	if(itemList[id]->type() == CalItem::Event)
 	{
-		qDebug() << "Try to delete a event.";
+//		qDebug() << "Try to delete a event.";
 		auto event = (const CalEvent*)itemList[id];
 		if(event->repeatCycle == CalEvent::None)
 		{
@@ -113,6 +115,6 @@ void DayInfoWidget::delSelectedItem()
 				calManager->addItem(newEvent);
 			}
 		}
-		update();
+		emit changed();
 	}
 }

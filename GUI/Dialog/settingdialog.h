@@ -20,6 +20,9 @@ private slots:
 	void on_loadButton_clicked();
 	void on_saveButton_clicked();
 
+signals:
+	void changed ();
+
 private:
 	Ui::SettingDialog *ui;
 	ICalManager* calManager;

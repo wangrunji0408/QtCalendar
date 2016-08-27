@@ -29,6 +29,9 @@ private:
 	void showColor (QColor color);
 	void delSelectedItem ();
 
+signals:
+	void changed ();
+
 private:
 	Ui::DayInfoWidget *ui;
 	QDate date;

@@ -46,3 +46,17 @@ void ListItemFile::mousePressEvent(QMouseEvent *event)
 		event->accept();
 	}
 }
+
+void ListItemFile::keyPressEvent(QKeyEvent *ke)
+{
+	if(ke->key() == Qt::Key_Backspace || ke->key() == Qt::Key_Delete)
+	{
+		calManager->delItem(file);
+		ke->accept();
+	}
+}
+
+void ListItemFile::mouseDoubleClickEvent(QMouseEvent *)
+{
+
+}

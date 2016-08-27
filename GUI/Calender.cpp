@@ -140,8 +140,9 @@ void Calender::on_addItemButton_clicked()
 
 void Calender::on_settingButton_clicked()
 {
-	SettingDialog(calManager).exec();
-	update();
+	auto dialog = new SettingDialog(calManager);
+	connect(dialog, SIGNAL(changed()), this, SLOT(update()));
+	dialog->exec();
 }
 
 void Calender::showDayInfoWidget(QDate date)
@@ -150,5 +151,6 @@ void Calender::showDayInfoWidget(QDate date)
 	if(dayInfo != nullptr)
 		dayInfo->close();
 	dayInfo = new DayInfoWidget(date, calManager);
+	connect(dayInfo, SIGNAL(changed()), this, SLOT(update()));
 	dayInfo->show();
 }

@@ -16,8 +16,10 @@ class ListItemFile : public QWidget
 public:
 	explicit ListItemFile(const CalFile* _file, QDate _date, ICalManager* _calManager, QWidget *parent = 0);
 	~ListItemFile();
-	void mouseMoveEvent(QMouseEvent* event) override;
-	void mousePressEvent(QMouseEvent *event) override;
+	void mouseMoveEvent(QMouseEvent* event) override;	// 拖出文件-移动
+	void mousePressEvent(QMouseEvent *event) override;	// 拖出文件-点击
+	void keyPressEvent(QKeyEvent* ke) override;			// 删除
+	void mouseDoubleClickEvent(QMouseEvent *) override;	// 打开文件
 
 private:
 	Ui::ListItemFile *ui;

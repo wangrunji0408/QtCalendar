@@ -21,6 +21,7 @@ SettingDialog::~SettingDialog()
 void SettingDialog::on_loadButton_clicked()
 {
 	calManager->load();
+	emit changed();
 }
 
 void SettingDialog::on_saveButton_clicked()

@@ -36,13 +36,11 @@ private slots:
 
 public slots:
 	void showDayInfoWidget (QDate date);
+	void update ();
 
 private:
 	QDate getFirstDayOfMonth ();
 	void init ();
-
-public slots:
-	void update ();
 
 private:
 	Ui::Calender *ui;
