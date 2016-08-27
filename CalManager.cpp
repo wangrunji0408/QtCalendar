@@ -130,6 +130,7 @@ QVariantMap CalManager::toVariantMap() const
 
 void CalManager::fromVariantMap(const QVariantMap &data)
 {
+	clear();
 	for(QVariant var: data["itemList"].toList())
 	{
 		QVariantMap map = var.toMap();

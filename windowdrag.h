@@ -7,9 +7,11 @@
 private:\
 QPoint mousePos0, windowPos0;\
 bool drag = false;\
+bool windowDragEnabled = true;\
 public:\
 void mousePressEvent(QMouseEvent *event) override\
 {\
+	if(!windowDragEnabled) return;\
 	mousePos0 = event->globalPos();\
 	windowPos0 = this->pos();\
 	drag = event->button() == Qt::LeftButton;\

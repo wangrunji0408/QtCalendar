@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     EventSettingDialog.cpp \
     DayInfoWidget.cpp \
     listitemevent.cpp \
-    deleventdialog.cpp
+    deleventdialog.cpp \
+    settingdialog.cpp
 
 HEADERS  += mainwindow.h \
     calender.h \
@@ -41,7 +42,8 @@ HEADERS  += mainwindow.h \
     calitemall.h \
     windowdrag.h \
     listitemevent.h \
-    deleventdialog.h
+    deleventdialog.h \
+    settingdialog.h
 
 FORMS    += mainwindow.ui \
     daywidget.ui \
@@ -49,7 +51,8 @@ FORMS    += mainwindow.ui \
     EventSettingDialog.ui \
     DayInfoWidget.ui \
     listitemevent.ui \
-    deleventdialog.ui
+    deleventdialog.ui \
+    settingdialog.ui
 
 CONFIG += c++11
 
