@@ -5,6 +5,8 @@
 #include <QColorDialog>
 #include "Dialog/deleventdialog.h"
 #include "calender.h"
+#include "ListItem/listitemevent.h"
+#include "ListItem/listitemfile.h"
 
 DayInfoWidget::DayInfoWidget(const QDate &_date, ICalManager *_calManager, QWidget *parent):
 	QWidget(parent),
@@ -47,7 +49,10 @@ void DayInfoWidget::update ()
 		else if(item->type() == CalItem::File)
 		{
 			auto file = (const CalFile*)item;
-			ui->itemList->addItem("File: " + file->fileInfo.fileName());
+			auto wi = new QListWidgetItem ();
+			auto lif = new ListItemFile(file, date, calManager);
+			ui->itemList->addItem(wi);
+			ui->itemList->setItemWidget(wi, lif);
 		}
 	}
 }

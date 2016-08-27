@@ -22,7 +22,6 @@ SOURCES += \
     GUI/Dialog/deleventdialog.cpp \
     GUI/Dialog/EventSettingDialog.cpp \
     GUI/Dialog/settingdialog.cpp \
-    GUI/EventFilter/filedragouteventfilter.cpp \
     GUI/EventFilter/windowdrageventfilter.cpp \
     GUI/ListItem/listitemevent.cpp \
     GUI/ListItem/listitemfile.cpp \
@@ -42,7 +41,6 @@ HEADERS  += \
     GUI/Dialog/deleventdialog.h \
     GUI/Dialog/EventSettingDialog.h \
     GUI/Dialog/settingdialog.h \
-    GUI/EventFilter/filedragouteventfilter.h \
     GUI/EventFilter/windowdrageventfilter.h \
     GUI/ListItem/listitemevent.h \
     GUI/ListItem/listitemfile.h \

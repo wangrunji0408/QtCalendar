@@ -7,7 +7,6 @@
 #include <QListWidgetItem>
 #include "../CalManager/CalManager.h"
 #include "EventFilter/windowdrageventfilter.h"
-#include "ListItem/listitemevent.h"
 
 namespace Ui {
 class DayInfoWidget;
