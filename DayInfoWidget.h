@@ -22,6 +22,12 @@ public:
 	void update ();
 	void keyPressEvent(QKeyEvent *ke) override;
 
+private slots:
+	void on_pushButton_clicked();
+
+private:
+	void showColor (QColor color);
+
 private:
 	Ui::DayInfoWidget *ui;
 	QDate date;
