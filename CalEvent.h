@@ -30,8 +30,8 @@ public:
 	virtual QVector<QDate> getDateList() const override;
 //	virtual QJsonObject toJson () const override;
 //	virtual void fromJson (QJsonObject const& json) override;
-	QVariantMap toVariantMap () const;
-	void fromVariantMap (QVariantMap const& v);
+	virtual QVariantMap toVariantMap () const override;
+	virtual void fromVariantMap (QVariantMap const& v) override;
 
 	bool crossDate () const;
 	int getRepeatIndex (QDate date) const;

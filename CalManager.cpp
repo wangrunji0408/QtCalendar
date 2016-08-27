@@ -3,6 +3,7 @@
 #include <QJsonDocument>
 #include <QFile>
 #include <QTextStream>
+#include <QSettings>
 
 CalManager::CalManager()
 {
@@ -59,6 +60,8 @@ void CalManager::save()
 	QFile file(fileName);
 	file.open(QFile::WriteOnly);
 	QTextStream(&file) << QJsonDocument::fromVariant(toVariantMap()).toJson();
+
+	settings.sync();
 }
 
 void CalManager::load()
@@ -81,6 +84,18 @@ void CalManager::load()
 	}
 	else
 		throw std::runtime_error("Json Parse Error!");
+}
+
+bool CalManager::addFile(QDate date, const QString &fileName)
+{
+	QFileInfo fileInfo(fileName);
+	if(!fileInfo.exists())
+		qDebug() << "No such file: " << fileName;
+	auto file = new CalFile(fileName, date);
+	bool result = file->copyTo(getFileDir(date));
+	if(result)
+		addItem(file);
+	return result;
 }
 
 QVector<const CalItem *> CalManager::getItemListInDate(QDate date) const
@@ -111,18 +126,12 @@ QVariantMap CalManager::toVariantMap() const
 
 	QVariantList itemList;
 	for(const CalItem* item: getItemList())
-	{
-		if(item->type() == CalItem::Event)
-		{
-			auto event = (const CalEvent*)item;
-			itemList.append(event->toVariantMap());
-		}
-	}
+		itemList.append(item->toVariantMap());
 	data.insert("itemList", itemList);
 
 	QVariantMap colorMap;
 	for(QDate date: dateToColor.keys())
-		colorMap.insert(date.toString(), dateToColor[date]);
+		colorMap.insert(date.toString("yyyy-MM-dd"), dateToColor[date]);
 	data.insert("colorMap", colorMap);
 
 	return data;
@@ -140,11 +149,28 @@ void CalManager::fromVariantMap(const QVariantMap &data)
 			event->fromVariantMap(map);
 			addItem(event);
 		}
+		else if(map["type"] == "Note")
+		{
+			auto note = new CalNote;
+			note->fromVariantMap(map);
+			addItem(note);
+		}
+		else if(map["type"] == "File")
+		{
+			auto file = new CalFile;
+			file->fromVariantMap(map);
+			addItem(file);
+		}
 	}
 	QVariantMap colorMap = data["colorMap"].toMap();
 	for(QString dateString: colorMap.keys())
 	{
 		QColor color = colorMap[dateString].value<QColor>();
-		dateToColor.insert(QDate::fromString(dateString), color);
+		dateToColor.insert(QDate::fromString(dateString, "yyyy-MM-dd"), color);
 	}
+}
+
+QDir CalManager::getFileDir(QDate date) const
+{
+	return QDir("file/" + date.toString("yyyy-MM-dd"));
 }

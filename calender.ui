@@ -69,16 +69,9 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="settingButton">
           <property name="text">
-           <string>保存</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>读取</string>
+           <string>设置</string>
           </property>
          </widget>
         </item>

@@ -36,7 +36,7 @@ private:
 	Ui::DayInfoWidget *ui;
 	QDate date;
 	ICalManager* calManager;
-	QMap<QListWidgetItem*, ListItemEvent*> itemToItemEvent;
+	QVector<const CalItem*> itemList;
 };
 
 #endif // DAYINFOWIDGET_H

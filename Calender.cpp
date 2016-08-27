@@ -3,6 +3,7 @@
 #include "DayWidget.h"
 #include "EventSettingDialog.h"
 #include "DayInfoWidget.h"
+#include "settingdialog.h"
 #include <QDebug>
 #include <QPalette>
 #include <QMimeData>
@@ -137,14 +138,9 @@ void Calender::on_addItemButton_clicked()
 	calManager->addItem(dialog.getEvent());
 }
 
-void Calender::on_pushButton_clicked()
+void Calender::on_settingButton_clicked()
 {
-	calManager->save();
-}
-
-void Calender::on_pushButton_2_clicked()
-{
-	calManager->load();
+	SettingDialog(calManager).exec();
 	update();
 }
 

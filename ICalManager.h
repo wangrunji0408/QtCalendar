@@ -28,6 +28,8 @@ public:
 	virtual void load () = 0;
 	virtual void merge (ICalManager&);
 
+	virtual bool addFile (QDate, const QString &fileName) = 0;
+
 	virtual QVector<const CalItem*> getItemListInDate (QDate) const = 0;
 	virtual QVector<const CalItem*> getItemList ( std::function<bool(const CalItem*)> filter = ALWAYS_TRUE ) const = 0;
 };

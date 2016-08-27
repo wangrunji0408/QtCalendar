@@ -74,10 +74,7 @@ void DayWidget::dropEvent(QDropEvent *event)
 	for(QUrl url: event->mimeData()->urls())
 	{
 		QString filePath = url.toLocalFile();
-		auto cf = new CalFile(filePath, date);
-		QDir targetDir = QDir("file");//calManager->getSettings().value("filePath");
-		cf->copyTo(targetDir);
-		calManager->addItem(cf);
+		calManager->addFile(date, filePath);
 	}
 	event->accept();
 	update();

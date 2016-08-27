@@ -27,7 +27,8 @@ void DayInfoWidget::update ()
 	ui->dateLabel->setText(date.toString("yyyy年M月d日"));
 	showColor(calManager->getColor(date));
 	ui->itemList->clear();
-	for(auto item: calManager->getItemListInDate(date))
+	itemList = calManager->getItemListInDate(date);
+	for(auto item: itemList)
 	{
 		if(item->type() == CalItem::Event)
 		{
@@ -36,7 +37,6 @@ void DayInfoWidget::update ()
 			auto ie = new ListItemEvent(event, date, calManager);
 			ui->itemList->addItem(wi);
 			ui->itemList->setItemWidget(wi, ie);
-			itemToItemEvent.insert(wi, ie);
 		}
 		else if(item->type() == CalItem::Note)
 		{
@@ -81,11 +81,11 @@ void DayInfoWidget::showColor(QColor color)
 void DayInfoWidget::delSelectedItem()
 {
 	qDebug() << "Press Delete.";
-	auto ie = itemToItemEvent[ui->itemList->currentItem()];
-	if(ie != nullptr)
+	int id = ui->itemList->currentRow();
+	if(itemList[id]->type() == CalItem::Event)
 	{
 		qDebug() << "Try to delete a event.";
-		const CalEvent* event = ie->event;
+		auto event = (const CalEvent*)itemList[id];
 		if(event->repeatCycle == CalEvent::None)
 		{
 			calManager->delItem(event);
