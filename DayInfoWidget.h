@@ -3,9 +3,12 @@
 
 #include <QWidget>
 #include <QPoint>
+#include <QMap>
+#include <QListWidgetItem>
 #include "calitemall.h"
 #include "CalManager.h"
 #include "windowdrag.h"
+#include "listitemevent.h"
 
 namespace Ui {
 class DayInfoWidget;
@@ -19,19 +22,21 @@ class DayInfoWidget : public QWidget
 public:
 	explicit DayInfoWidget(const QDate &_date, ICalManager* _calManager, QWidget *parent = 0);
 	~DayInfoWidget();
-	void update ();
 	void keyPressEvent(QKeyEvent *ke) override;
 
 private slots:
 	void on_pushButton_clicked();
+	void update ();
 
 private:
 	void showColor (QColor color);
+	void delSelectedItem ();
 
 private:
 	Ui::DayInfoWidget *ui;
 	QDate date;
 	ICalManager* calManager;
+	QMap<QListWidgetItem*, ListItemEvent*> itemToItemEvent;
 };
 
 #endif // DAYINFOWIDGET_H

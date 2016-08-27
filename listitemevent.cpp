@@ -27,24 +27,6 @@ ListItemEvent::~ListItemEvent()
 void ListItemEvent::keyPressEvent(QKeyEvent *ke)
 {
 	qDebug() << "ListItemEvent::keyPressEvent";
-	if(ke->key() == Qt::Key_Delete)
-	{
-		DelEventDialog dialog;
-		dialog.exec();
-		auto delType = dialog.getDelType();
-		if(delType == DelEventDialog::All)
-		{
-			calManager->delItem(event);
-		}
-		else if(delType == DelEventDialog::One)
-		{
-			calManager->delItem(event);
-			auto newEvent = (CalEvent*)event;
-			newEvent->delRepeatIndex(newEvent->getRepeatIndex(date));
-			calManager->addItem(newEvent);
-		}
-		ke->accept();
-	}
 }
 
 void ListItemEvent::mouseDoubleClickEvent(QMouseEvent *)

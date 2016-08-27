@@ -13,6 +13,7 @@ class ICalManager
 {
 public:
 	ICalManager();
+
 public:
 	virtual void addItem (const CalItem*) = 0;
 	virtual void delItem (const CalItem*) = 0;

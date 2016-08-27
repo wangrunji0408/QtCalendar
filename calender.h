@@ -42,7 +42,9 @@ public slots:
 private:
 	QDate getFirstDayOfMonth ();
 	void init ();
-	void update ();		// 根据 yearAndMonth 更新 dayWidget[][]
+
+public slots:
+	void update ();
 
 private:
 	Ui::Calender *ui;

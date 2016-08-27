@@ -16,14 +16,17 @@ DelEventDialog::~DelEventDialog()
 void DelEventDialog::on_pushButton_clicked()
 {
 	delType = Cancel;
+	close();
 }
 
 void DelEventDialog::on_pushButton_2_clicked()
 {
 	delType = One;
+	close();
 }
 
 void DelEventDialog::on_pushButton_3_clicked()
 {
 	delType = All;
+	close();
 }
