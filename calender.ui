@@ -69,6 +69,20 @@
          <number>0</number>
         </property>
         <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>保存</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>读取</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="addItemButton">
           <property name="text">
            <string>+</string>

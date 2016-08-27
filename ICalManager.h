@@ -1,7 +1,7 @@
 #ifndef CALENDARMANAGER_H
 #define CALENDARMANAGER_H
 
-#include "CalItem.h"
+#include "CalItemAll.h"
 #include <QVector>
 #include <QColor>
 #include <QSettings>

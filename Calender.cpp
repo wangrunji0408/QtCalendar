@@ -20,6 +20,7 @@ Calender::Calender(QWidget *parent) :
 
 Calender::~Calender()
 {
+	delete calManager;
 	delete ui;
 }
 
@@ -134,6 +135,17 @@ void Calender::on_addItemButton_clicked()
 	if(dialog.result() == QDialog::Rejected)
 		return;
 	calManager->addItem(dialog.getEvent());
+}
+
+void Calender::on_pushButton_clicked()
+{
+	calManager->save();
+}
+
+void Calender::on_pushButton_2_clicked()
+{
+	calManager->load();
+	update();
 }
 
 void Calender::showDayInfoWidget(QDate date)

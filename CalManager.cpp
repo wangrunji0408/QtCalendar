@@ -1,9 +1,17 @@
 #include "CalManager.h"
 #include <QDebug>
+#include <QJsonDocument>
+#include <QFile>
+#include <QTextStream>
 
 CalManager::CalManager()
 {
 
+}
+
+CalManager::~CalManager()
+{
+	save();
 }
 
 void CalManager::addItem(const CalItem *item)
@@ -46,11 +54,33 @@ QSettings& CalManager::getSettings()
 
 void CalManager::save()
 {
-//	settings.sync();
+	qDebug() << "CalManager::save";
+	QString fileName = "data.txt";
+	QFile file(fileName);
+	file.open(QFile::WriteOnly);
+	QTextStream(&file) << QJsonDocument::fromVariant(toVariantMap()).toJson();
 }
 
 void CalManager::load()
 {
+	qDebug() << "CalManager::load() Begin.";
+	QString fileName = "data.txt";
+	QFile file(fileName);
+	file.open(QFile::ReadOnly);
+	QString jsonStr = QTextStream(&file).readAll();
+
+	QJsonParseError jsonError;
+	QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonStr.toUtf8(), &jsonError);
+	if(jsonError.error == QJsonParseError::NoError)
+	{
+		if(jsonDoc.isObject())
+		{
+			qDebug() << "Json Parse success!";
+			fromVariantMap(jsonDoc.toVariant().toMap());
+		}
+	}
+	else
+		throw std::runtime_error("Json Parse Error!");
 }
 
 QVector<const CalItem *> CalManager::getItemListInDate(QDate date) const
@@ -73,4 +103,47 @@ QVector<const CalItem *> CalManager::getItemList(std::function<bool (const CalIt
 				list.append(item);
 	}
 	return list;
+}
+
+QVariantMap CalManager::toVariantMap() const
+{
+	QVariantMap data;
+
+	QVariantList itemList;
+	for(const CalItem* item: getItemList())
+	{
+		if(item->type() == CalItem::Event)
+		{
+			auto event = (const CalEvent*)item;
+			itemList.append(event->toVariantMap());
+		}
+	}
+	data.insert("itemList", itemList);
+
+	QVariantMap colorMap;
+	for(QDate date: dateToColor.keys())
+		colorMap.insert(date.toString(), dateToColor[date]);
+	data.insert("colorMap", colorMap);
+
+	return data;
+}
+
+void CalManager::fromVariantMap(const QVariantMap &data)
+{
+	for(QVariant var: data["itemList"].toList())
+	{
+		QVariantMap map = var.toMap();
+		if(map["type"] == "Event")
+		{
+			auto event = new CalEvent;
+			event->fromVariantMap(map);
+			addItem(event);
+		}
+	}
+	QVariantMap colorMap = data["colorMap"].toMap();
+	for(QString dateString: colorMap.keys())
+	{
+		QColor color = colorMap[dateString].value<QColor>();
+		dateToColor.insert(QDate::fromString(dateString), color);
+	}
 }

@@ -1,4 +1,5 @@
 #include "CalEvent.h"
+#include <QDebug>
 
 bool CalEvent::inDate(QDate date) const
 {
@@ -27,6 +28,61 @@ QVector<QDate> CalEvent::getDateList() const
 	}
 	return dateList;
 }
+
+QVariantMap CalEvent::toVariantMap() const
+{
+	QVariantMap v;
+	v.insert("type", "Event");
+	v.insert("createTime", createTime);
+	v.insert("color", color);
+	v.insert("name", name);
+	v.insert("address", address);
+	v.insert("tBegin", tBegin);
+	v.insert("tEnd", tEnd);
+	v.insert("note", note);
+	v.insert("priority", priority);
+	v.insert("repeatCycle", repeatCycle);
+	v.insert("repeatTimes", repeatTimes);
+	QVariantList list;
+	for(int index: deletedRepeatIndex)
+		list.append(index);
+	v.insert("deletedRepeatIndex", list);
+	return v;
+}
+
+void CalEvent::fromVariantMap(QVariantMap const& v)
+{
+	createTime = v["createTime"].toDateTime();
+	color = v["color"].value<QColor>();
+	name = v["name"].toString();
+	address = v["address"].toString();
+	tBegin = v["tBegin"].toDateTime();
+	tEnd = v["tEnd"].toDateTime();
+	note = v["note"].toString();
+	priority = v["priority"].toInt();
+	repeatCycle = (RepeatCycle)v["repeatCycle"].toInt();
+	repeatTimes = v["repeatTimes"].toInt();
+	deletedRepeatIndex.clear();
+	for(auto var: v["deletedRepeatIndex"].toList())
+		deletedRepeatIndex.insert(var.toInt());
+}
+
+//QJsonObject CalEvent::toJson() const
+//{
+//	QJsonObject json;
+//	json.insert("createTime", createTime);
+//	json.insert("color", color);
+//	json.insert("name", name);
+//	json.insert("address", address);
+//	json.insert("tBegin", tBegin);
+//	json.insert("tEnd", tEnd);
+//	json.insert("note", note);
+//	json.insert("priority", priority);
+//	json.insert("repeatCycle", repeatCycle);
+//	json.insert("repeatTimes", repeatTimes);
+//	json.insert("deletedRepeatIndex", deletedRepeatIndex);
+//	return json;
+//}
 
 bool CalEvent::crossDate() const
 {

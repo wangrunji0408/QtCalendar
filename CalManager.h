@@ -10,6 +10,7 @@ class CalManager : public ICalManager
 {
 public:
 	CalManager();
+	~CalManager();
 
 private:
 	QSettings settings;
@@ -27,9 +28,13 @@ public:
 	virtual void save() override;
 	virtual void load() override;
 	virtual QVector<const CalItem *> getItemListInDate(QDate) const override;
-	virtual QVector<const CalItem *> getItemList(std::function<bool (const CalItem *)> filter) const override;
+	virtual QVector<const CalItem *> getItemList(std::function<bool (const CalItem *)> filter = ALWAYS_TRUE) const override;
 
 private:
+	QVariantMap toVariantMap () const;
+	void fromVariantMap (QVariantMap const& data);
+
+
 	QColor DEFAULT_COLOR_WORKDAY = Qt::white;
 	QColor DEFAULT_COLOR_WEEKEND = Qt::gray;
 };

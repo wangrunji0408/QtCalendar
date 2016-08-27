@@ -5,6 +5,7 @@
 #include <QString>
 #include <QTime>
 #include <QSet>
+#include <QVariant>
 
 class CalEvent: public CalItem
 {
@@ -27,6 +28,11 @@ public:
 	virtual CalItemType type () const override {return Event;};
 	virtual bool inDate (QDate date) const override;
 	virtual QVector<QDate> getDateList() const override;
+//	virtual QJsonObject toJson () const override;
+//	virtual void fromJson (QJsonObject const& json) override;
+	QVariantMap toVariantMap () const;
+	void fromVariantMap (QVariantMap const& v);
+
 	bool crossDate () const;
 	int getRepeatIndex (QDate date) const;
 	void delRepeatIndex (int index);
@@ -36,5 +42,7 @@ public:
 private:
 	void nextDate (QDateTime &t1, QDateTime &t2) const;
 };
+
+//Q_DECLARE_METATYPE(CalEvent)
 
 #endif // CALEVENT_H

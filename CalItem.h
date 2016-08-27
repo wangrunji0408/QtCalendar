@@ -5,6 +5,7 @@
 #include <QDate>
 #include <QVector>
 #include <QColor>
+#include <QJsonObject>
 
 struct CalItem
 {
@@ -20,6 +21,8 @@ public:
 	virtual bool inDate (QDate date) const = 0;
 	virtual QVector<QDate> getDateList () const = 0;
 	virtual CalItemType type () const = 0;
+//	virtual QJsonObject toJson () const = 0;
+//	virtual void fromJson (QJsonObject const& json) = 0;
 };
 
 struct CalOneDayItem: public CalItem
