@@ -24,6 +24,7 @@ public:
 private slots:
 	void on_pushButton_clicked();
 	void update ();
+	void on_delButton_clicked();
 
 private:
 	void showColor (QColor color);

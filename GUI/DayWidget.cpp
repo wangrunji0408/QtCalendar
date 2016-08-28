@@ -20,9 +20,10 @@ DayWidget::~DayWidget()
 	delete ui;
 }
 
-void DayWidget::setDate(const QDate& _date)
+void DayWidget::setDate(const QDate& _date, bool _inMonth)
 {
 	date = _date;
+	inMonth = _inMonth;
 	update();
 }
 
@@ -30,9 +31,21 @@ void DayWidget::update()
 {
 	ui->dayLabel->setText(QString::number(date.day()));
 
+	QColor textColor;
+	if(date == QDate::currentDate())
+		textColor = Qt::red;
+	else if(inMonth)
+		textColor = Qt::black;
+	else
+		textColor = Qt::darkGray;
 	QPalette pal = ui->dayLabel->palette();
-	pal.setBrush(QPalette::WindowText, date == QDate::currentDate()? Qt::red: Qt::black);
+	pal.setBrush(QPalette::WindowText, textColor);
 	ui->dayLabel->setPalette(pal);
+
+	pal = this->palette();
+	pal.setBrush(this->backgroundRole(), calManager->getColor(date));
+	this->setAutoFillBackground(true);
+	this->setPalette(pal);
 
 	itemList = calManager->getItemListInDate(date);
 

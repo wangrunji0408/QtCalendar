@@ -24,11 +24,6 @@ ListItemEvent::~ListItemEvent()
 	delete ui;
 }
 
-void ListItemEvent::keyPressEvent(QKeyEvent *ke)
-{
-	qDebug() << "ListItemEvent::keyPressEvent";
-}
-
 void ListItemEvent::mouseDoubleClickEvent(QMouseEvent *)
 {
 	EventSettingDialog dialog(event);

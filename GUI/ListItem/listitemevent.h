@@ -18,7 +18,6 @@ public:
 	~ListItemEvent();
 
 public:
-	void keyPressEvent(QKeyEvent* ke) override;
 	void mouseDoubleClickEvent(QMouseEvent *) override;
 
 private:

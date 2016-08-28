@@ -7,40 +7,99 @@
     <x>0</x>
     <y>0</y>
     <width>278</width>
-    <height>293</height>
+    <height>324</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>设置</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <widget class="QCheckBox" name="checkBox">
-     <property name="text">
-      <string>固定窗口</string>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>日历设置</string>
      </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>6</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>每周第一天</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="firstDay"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="checkBox_2">
-     <property name="text">
-      <string>鼠标穿透</string>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>界面设置</string>
      </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="leftMargin">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>6</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>透明度</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="transparent">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mouseCross">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>鼠标穿透</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>每周第一天</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="firstDay"/>
-     </item>
-    </layout>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox">
@@ -79,6 +138,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="importButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>导入</string>
         </property>
@@ -86,14 +148,15 @@
       </item>
       <item>
        <widget class="QPushButton" name="exportButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>导出</string>
         </property>
        </widget>
       </item>
      </layout>
-     <zorder>pushButton</zorder>
-     <zorder>pushButton_2</zorder>
      <zorder>importButton</zorder>
      <zorder>loadButton</zorder>
      <zorder>saveButton</zorder>

@@ -36,7 +36,7 @@ void Calender::init()
 		l->setAlignment(Qt::AlignHCenter);
 		ui->gridLayout_2->addWidget(l, 0, j);
 	}
-	for(int i=0; i<5; ++i)
+	for(int i=0; i<ROW; ++i)
 	{
 		for(int j=0; j<7; ++j)
 		{
@@ -60,19 +60,11 @@ void Calender::update()
 	}
 
 	QDate date = getFirstDayOfMonth();
-	for(int i=0; i<5; ++i)
+	for(int i=0; i<ROW; ++i)
 		for(int j=0; j<7; ++j)
 		{
 			auto& w = dayWidget[i][j];
-			w->setDate(date);
-
-//			w->setStyleSheet("background-color: " + calManager->getColor(date).name());
-			QPalette pal = w->palette();
-			pal.setBrush(w->backgroundRole(), calManager->getColor(date));
-			w->setAutoFillBackground(true);
-			w->setPalette(pal);
-
-
+			w->setDate(date, date.month() == month);
 			date = date.addDays(1);
 		}
 }
@@ -136,6 +128,7 @@ void Calender::on_addItemButton_clicked()
 	if(dialog.result() == QDialog::Rejected)
 		return;
 	calManager->addItem(dialog.getEvent());
+	update();
 }
 
 void Calender::on_settingButton_clicked()
@@ -148,6 +141,7 @@ void Calender::on_settingButton_clicked()
 void Calender::on_fix_clicked(bool checked)
 {
 	windowDrag.setEnabled(!checked);
+	calManager->getSettings().setProperty("WindowDrag", checked);
 }
 
 void Calender::showDayInfoWidget(QDate date)

@@ -15,10 +15,14 @@ class SettingDialog : public QDialog
 public:
 	explicit SettingDialog(ICalManager* _calManager, QWidget *parent = 0);
 	~SettingDialog();
+private:
+	void load ();
+	void save ();
 
 private slots:
 	void on_loadButton_clicked();
 	void on_saveButton_clicked();
+	void on_buttonBox_accepted();
 
 signals:
 	void changed ();

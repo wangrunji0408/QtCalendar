@@ -20,7 +20,7 @@ class DayWidget : public QWidget
 public:
 	explicit DayWidget(ICalManager* _calManager, QWidget *parent = 0);
 	~DayWidget();
-	void setDate (const QDate& _date);
+	void setDate (const QDate& _date, bool _inMonth);
 	void update ();
 	void mouseReleaseEvent(QMouseEvent* e) override;
 	void dragEnterEvent(QDragEnterEvent *event) override;
@@ -34,6 +34,7 @@ private:
 	QDate date;
 	QVector<const CalItem*> itemList;
 	ICalManager* calManager;
+	bool inMonth;
 };
 
 #endif // DAYWIDGET_H

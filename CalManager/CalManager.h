@@ -37,7 +37,7 @@ private:
 
 
 	QColor DEFAULT_COLOR_WORKDAY = Qt::white;
-	QColor DEFAULT_COLOR_WEEKEND = Qt::gray;
+	QColor DEFAULT_COLOR_WEEKEND = Qt::lightGray;
 };
 
 #endif // CALMANAGER_H

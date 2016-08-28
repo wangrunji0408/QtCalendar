@@ -90,6 +90,8 @@ void DayInfoWidget::delSelectedItem()
 {
 //	qDebug() << "Press Delete.";
 	int id = ui->itemList->currentRow();
+	if(id < 0 || id >= itemList.size())
+		return;
 	if(itemList[id]->type() == CalItem::Event)
 	{
 //		qDebug() << "Try to delete a event.";
@@ -97,6 +99,7 @@ void DayInfoWidget::delSelectedItem()
 		if(event->repeatCycle == CalEvent::None)
 		{
 			calManager->delItem(event);
+			emit changed();
 		}
 		else
 		{
@@ -106,6 +109,7 @@ void DayInfoWidget::delSelectedItem()
 			if(delType == DelEventDialog::All)
 			{
 				calManager->delItem(event);
+				emit changed();
 			}
 			else if(delType == DelEventDialog::One)
 			{
@@ -113,8 +117,18 @@ void DayInfoWidget::delSelectedItem()
 				auto newEvent = (CalEvent*)event;
 				newEvent->delRepeatIndex(newEvent->getRepeatIndex(date));
 				calManager->addItem(newEvent);
+				emit changed();
 			}
 		}
+	}
+	else
+	{
+		calManager->delItem(itemList[id]);
 		emit changed();
 	}
+}
+
+void DayInfoWidget::on_delButton_clicked()
+{
+	delSelectedItem();
 }

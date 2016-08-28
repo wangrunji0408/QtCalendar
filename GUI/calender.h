@@ -44,10 +44,11 @@ private:
 	void init ();
 
 private:
+	static const int ROW = 6;
 	Ui::Calender *ui;
 	int firstDayOfWeek;	// 1-7
 	int year, month;
-	DayWidget*	dayWidget[5][7];
+	DayWidget*	dayWidget[ROW][7];
 	QLabel*		weekdayLabel[7];
 	ICalManager* calManager;
 	WindowDragEventFilter windowDrag;
