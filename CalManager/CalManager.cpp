@@ -30,6 +30,7 @@ void CalManager::delItem(const CalItem *item)
 void CalManager::clear()
 {
 	dateToItemSet.clear();
+	dateToColor.clear();
 }
 
 void CalManager::setColor(QDate date, QColor color)
