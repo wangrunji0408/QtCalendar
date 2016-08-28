@@ -73,8 +73,6 @@ void Calender::applyLanguage()
 void Calender::update()
 {
 	applyLanguage();
-	QString title = QString::number(year) + tr("年") + QString::number(month) + tr("月");
-	ui->titleLabel->setText(title);
 	for(int j=0; j<7; ++j)
 	{
 		int firstDayOfWeek = calManager->getSettings()->value("FirstDayOfWeek").toInt();
@@ -124,11 +122,13 @@ void Calender::dragEnterEvent(QDragEnterEvent *event)
 
 void Calender::changeEvent(QEvent *e)
 {
-	QWidget::changeEvent(e);
 	if(e->type() == QEvent::LanguageChange)
 	{
 		ui->retranslateUi(this);
+		QString title = QString::number(year) + "-" + QString::number(month);
+		ui->titleLabel->setText(title);
 	}
+	QWidget::changeEvent(e);
 }
 
 void Calender::nextMonth()

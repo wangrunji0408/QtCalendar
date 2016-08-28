@@ -18,15 +18,12 @@ public:
 private:
 	void load ();
 	void save ();
-	void applyLanguage ();
 
 private slots:
 	void on_loadButton_clicked();
 	void on_saveButton_clicked();
 	void on_buttonBox_accepted();
-
 	void on_exportButton_clicked();
-
 	void on_importButton_clicked();
 
 signals:

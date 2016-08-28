@@ -18,6 +18,7 @@ public:
 	~ListItemFile();
 	void mouseMoveEvent(QMouseEvent* event) override;	// 拖出文件-移动
 	void mousePressEvent(QMouseEvent *event) override;	// 拖出文件-点击
+	void mouseReleaseEvent(QMouseEvent *event) override;// 拖出文件-释放
 	void mouseDoubleClickEvent(QMouseEvent *) override;	// 打开文件
 
 private:
@@ -25,7 +26,9 @@ private:
 	const CalFile* file;
 	ICalManager* calManager;
 	QDate date;
+
 	QPoint mousePos0;
+	bool dragging = false;
 };
 
 #endif // LISTITEMFILE_H

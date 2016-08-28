@@ -78,8 +78,11 @@ void DayWidget::mouseReleaseEvent(QMouseEvent *e)
 
 void DayWidget::dragEnterEvent(QDragEnterEvent *event)
 {
-	if (event->mimeData()->hasFormat("text/uri-list"))
+	if (calManager->getSettings()->value("FileDrag", true).toBool()
+		&& event->mimeData()->hasFormat("text/uri-list"))
 		event->acceptProposedAction();
+	else
+		QWidget::dragEnterEvent(event);
 }
 
 void DayWidget::dropEvent(QDropEvent *event)

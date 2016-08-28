@@ -39,47 +39,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="74"/>
+        <location filename="../GUI/Calender.cpp" line="76"/>
         <source>年</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="74"/>
+        <location filename="../GUI/Calender.cpp" line="76"/>
         <source>月</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="80"/>
+        <location filename="../GUI/Calender.cpp" line="82"/>
         <source>周一</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="80"/>
+        <location filename="../GUI/Calender.cpp" line="82"/>
         <source>周二</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="80"/>
+        <location filename="../GUI/Calender.cpp" line="82"/>
         <source>周三</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="80"/>
+        <location filename="../GUI/Calender.cpp" line="82"/>
         <source>周四</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="80"/>
+        <location filename="../GUI/Calender.cpp" line="82"/>
         <source>周五</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="80"/>
+        <location filename="../GUI/Calender.cpp" line="82"/>
         <source>周六</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Calender.cpp" line="80"/>
+        <location filename="../GUI/Calender.cpp" line="82"/>
         <source>周日</source>
         <translation type="unfinished"></translation>
     </message>
@@ -348,28 +348,49 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Dialog/settingdialog.ui" line="135"/>
+        <location filename="../GUI/Dialog/settingdialog.ui" line="132"/>
+        <source>允许文件拖拽</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GUI/Dialog/settingdialog.ui" line="142"/>
         <source>用户数据</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Dialog/settingdialog.ui" line="156"/>
+        <location filename="../GUI/Dialog/settingdialog.ui" line="163"/>
         <source>读取</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Dialog/settingdialog.ui" line="163"/>
+        <location filename="../GUI/Dialog/settingdialog.ui" line="170"/>
         <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Dialog/settingdialog.ui" line="173"/>
+        <location filename="../GUI/Dialog/settingdialog.ui" line="177"/>
         <source>导入</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../GUI/Dialog/settingdialog.ui" line="183"/>
+        <location filename="../GUI/Dialog/settingdialog.ui" line="184"/>
         <source>导出</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GUI/Dialog/settingdialog.cpp" line="62"/>
+        <source>保存文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GUI/Dialog/settingdialog.cpp" line="64"/>
+        <location filename="../GUI/Dialog/settingdialog.cpp" line="73"/>
+        <source>Text files (*.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../GUI/Dialog/settingdialog.cpp" line="71"/>
+        <source>读取文件</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

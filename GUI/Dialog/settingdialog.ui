@@ -126,6 +126,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="fileDrag">
+        <property name="text">
+         <string>允许文件拖拽</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

@@ -20,6 +20,7 @@ public:
 	QDateTime	createTime	= QDateTime::currentDateTime();
 	QColor		color		= Qt::red;
 public:
+//	virtual ~CalItem () {};
 	virtual bool inDate (QDate date) const = 0;
 	virtual QVector<QDate> getDateList () const = 0;
 	virtual CalItemType type () const = 0;

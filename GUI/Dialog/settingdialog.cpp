@@ -27,6 +27,7 @@ void SettingDialog::load()
 	ui->opacity->setValue( settings->value("Opacity", 1.0).toFloat() * 100 );
 	ui->firstDay->setCurrentIndex( settings->value("FirstDayOfWeek", 1).toInt() - 1 );
 	ui->language->setCurrentIndex( languageName.indexOf(settings->value("Language", "zh").toString()) );
+	ui->fileDrag->setChecked( settings->value("FileDrag", true).toBool() );
 }
 
 void SettingDialog::save()
@@ -36,11 +37,7 @@ void SettingDialog::save()
 	settings->setValue("Opacity", ui->opacity->value() / 100.0);
 	settings->setValue("FirstDayOfWeek", ui->firstDay->currentIndex() + 1);
 	settings->setValue("Language", languageName[ui->language->currentIndex()]);
-}
-
-void SettingDialog::applyLanguage()
-{
-
+	settings->setValue("FileDrag", ui->fileDrag->isChecked());
 }
 
 void SettingDialog::on_loadButton_clicked()
@@ -65,7 +62,8 @@ void SettingDialog::on_exportButton_clicked()
 	QString fileName = QFileDialog::getSaveFileName(this, tr("保存文件"),
 								 "",
 								 tr("Text files (*.txt)"));
-	calManager->saveTo(fileName);
+	if(fileName != "")
+		calManager->saveTo(fileName);
 }
 
 void SettingDialog::on_importButton_clicked()
@@ -73,6 +71,9 @@ void SettingDialog::on_importButton_clicked()
 	QString fileName = QFileDialog::getOpenFileName(this, tr("读取文件"),
 								 "",
 								 tr("Text files (*.txt)"));
-	calManager->loadFrom(fileName);
-	emit changed();
+	if(fileName != "")
+	{
+		calManager->loadFrom(fileName);
+		emit changed();
+	}
 }

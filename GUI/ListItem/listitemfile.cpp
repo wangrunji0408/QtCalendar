@@ -23,7 +23,7 @@ ListItemFile::~ListItemFile()
 
 void ListItemFile::mouseMoveEvent(QMouseEvent *event)
 {
-	if(event->buttons() & Qt::LeftButton)
+	if(dragging)
 	{
 		int distance = (event->pos() - mousePos0).manhattanLength();
 		if (distance < QApplication::startDragDistance())
@@ -36,18 +36,30 @@ void ListItemFile::mouseMoveEvent(QMouseEvent *event)
 		drag->setMimeData(mimedata);
 		drag->exec(Qt::CopyAction);
 	}
+	else
+	{
+		QWidget::mouseMoveEvent(event);
+	}
 }
 
 void ListItemFile::mousePressEvent(QMouseEvent *event)
 {
-	if(event->button() == Qt::LeftButton)
+	if(event->button() == Qt::LeftButton
+		&& calManager->getSettings()->value("FileDrag", true).toBool())
 	{
 		mousePos0 = event->pos();
+		dragging = true;
 	}
 	QWidget::mousePressEvent(event);
 }
 
-void ListItemFile::mouseDoubleClickEvent(QMouseEvent *)
+void ListItemFile::mouseReleaseEvent(QMouseEvent *event)
 {
+	dragging = false;
+	QWidget::mouseReleaseEvent(event);
+}
 
+void ListItemFile::mouseDoubleClickEvent(QMouseEvent *e)
+{
+	QWidget::mouseDoubleClickEvent(e);
 }

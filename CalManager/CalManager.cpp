@@ -27,7 +27,6 @@ void CalManager::delItem(const CalItem *item)
 {
 	for(QDate date: item->getDateList())
 		dateToItemSet[date].remove(item);
-	delete item;
 }
 
 void CalManager::clear()
