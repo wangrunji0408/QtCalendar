@@ -33,6 +33,7 @@ private slots:
 	void on_goRightButton_clicked();
 	void on_addItemButton_clicked();
 	void on_settingButton_clicked();
+	void on_fix_clicked(bool checked);
 
 public slots:
 	void showDayInfoWidget (QDate date);

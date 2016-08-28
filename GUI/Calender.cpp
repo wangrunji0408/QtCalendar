@@ -145,6 +145,11 @@ void Calender::on_settingButton_clicked()
 	dialog->exec();
 }
 
+void Calender::on_fix_clicked(bool checked)
+{
+	windowDrag.setEnabled(!checked);
+}
+
 void Calender::showDayInfoWidget(QDate date)
 {
 	static DayInfoWidget* dayInfo = nullptr;

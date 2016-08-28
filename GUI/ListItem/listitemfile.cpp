@@ -43,8 +43,8 @@ void ListItemFile::mousePressEvent(QMouseEvent *event)
 	if(event->button() == Qt::LeftButton)
 	{
 		mousePos0 = event->pos();
-		event->accept();
 	}
+	QWidget::mousePressEvent(event);
 }
 
 void ListItemFile::keyPressEvent(QKeyEvent *ke)

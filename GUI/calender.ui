@@ -45,6 +45,13 @@
       </spacer>
      </item>
      <item>
+      <widget class="QCheckBox" name="fix">
+       <property name="text">
+        <string>固定</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QWidget" name="widget_7" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
