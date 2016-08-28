@@ -7,12 +7,16 @@
 #include <QPalette>
 #include <QMimeData>
 #include <QMessageBox>
+#include <QApplication>
+#include <QTranslator>
+//#include <QEvent>
 
-Calender::Calender(QWidget *parent) :
+Calender::Calender(QApplication *_app, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::Calender)
 {
 	ui->setupUi(this);
+	app = _app;
 	init();
 	goToday();
 }
@@ -27,8 +31,9 @@ void Calender::init()
 {
 	setWindowFlags(Qt::FramelessWindowHint);
 	QObject::installEventFilter(&windowDrag);
+
 	calManager = new CalManager;
-	firstDayOfWeek = 7;
+	applyLanguage();
 	for(int j=0; j<7; ++j)
 	{
 		auto& l = weekdayLabel[j];
@@ -48,30 +53,53 @@ void Calender::init()
 	}
 }
 
+void Calender::applyLanguage()
+{
+	static QTranslator* trans;
+	if(trans == nullptr)
+		trans = new QTranslator;
+	else
+	{
+		app->removeTranslator(trans);
+	}
+	QString langName = calManager->getSettings()->value("Language", "zh").toString();
+	trans->load(langName);
+	app->installTranslator(trans);
+}
+
 void Calender::update()
 {
-	QString title = QString::number(year) + "年" + QString::number(month) + "月";
+	applyLanguage();
+	QString title = QString::number(year) + tr("年") + QString::number(month) + tr("月");
 	ui->titleLabel->setText(title);
-
 	for(int j=0; j<7; ++j)
 	{
+		int firstDayOfWeek = calManager->getSettings()->value("FirstDayOfWeek").toInt();
 		int weekday = (firstDayOfWeek-1 + j) % 7 + 1;
 		weekdayLabel[j]->setText(QDate::shortDayName(weekday));
 	}
 
+	float opacity = calManager->getSettings()->value("Opacity", 1).toFloat();
+	this->setWindowOpacity(opacity);
 	QDate date = getFirstDayOfMonth();
 	for(int i=0; i<ROW; ++i)
 		for(int j=0; j<7; ++j)
 		{
 			auto& w = dayWidget[i][j];
 			w->setDate(date, date.month() == month);
+//			w->setWindowOpacity(opacity);
 			date = date.addDays(1);
 		}
+
+	bool drag =  calManager->getSettings()->value("WindowDrag", true).toBool();
+	windowDrag.setEnabled(drag);
+	ui->fix->setChecked(!drag);
 }
 
 QDate Calender::getFirstDayOfMonth ()
 {
 	QDate date(year, month, 1);
+	int firstDayOfWeek = calManager->getSettings()->value("FirstDayOfWeek").toInt();
 	while(date.dayOfWeek() != firstDayOfWeek)
 		date = date.addDays(-1);
 	return date;
@@ -87,6 +115,15 @@ void Calender::goToday()
 void Calender::dragEnterEvent(QDragEnterEvent *event)
 {
 	qDebug() << "Calendar::dragEnterEvent()";
+}
+
+void Calender::changeEvent(QEvent *e)
+{
+	QWidget::changeEvent(e);
+	if(e->type() == QEvent::LanguageChange)
+	{
+		ui->retranslateUi(this);
+	}
 }
 
 void Calender::nextMonth()
@@ -141,7 +178,7 @@ void Calender::on_settingButton_clicked()
 void Calender::on_fix_clicked(bool checked)
 {
 	windowDrag.setEnabled(!checked);
-	calManager->getSettings().setProperty("WindowDrag", checked);
+	calManager->getSettings()->setValue("WindowDrag", !checked);
 }
 
 void Calender::showDayInfoWidget(QDate date)

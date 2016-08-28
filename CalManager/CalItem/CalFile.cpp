@@ -26,6 +26,11 @@ bool CalFile::copyTo(QDir dir)
 	return false;
 }
 
+bool CalFile::remove()
+{
+	fileInfo.path().remove(fileInfo.fileName());
+}
+
 QVariantMap CalFile::toVariantMap() const
 {
 	QVariantMap v;

@@ -28,7 +28,7 @@ DayInfoWidget::~DayInfoWidget()
 
 void DayInfoWidget::update ()
 {
-	ui->dateLabel->setText(date.toString("yyyy年M月d日"));
+	ui->dateLabel->setText(date.toString(tr("yyyy年M月d日")));
 	showColor(calManager->getColor(date));
 	ui->itemList->clear();
 	itemList = calManager->getItemListInDate(date);

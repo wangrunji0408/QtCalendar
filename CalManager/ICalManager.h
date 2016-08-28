@@ -22,7 +22,7 @@ public:
 	virtual void setColor (QDate date, QColor color) = 0;
 	virtual QColor getColor (QDate date) const = 0;
 
-	virtual QSettings& getSettings () = 0;
+	virtual QSettings* getSettings () = 0;
 
 	virtual void save () = 0;
 	virtual void load () = 0;

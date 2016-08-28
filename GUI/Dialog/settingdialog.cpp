@@ -21,18 +21,25 @@ SettingDialog::~SettingDialog()
 
 void SettingDialog::load()
 {
-	const QSettings& settings = calManager->getSettings();
-	ui->mouseCross->setChecked( settings.property("MouseCross").toBool() );
-	ui->transparent->setValue( settings.property("Transparent").toFloat() * 100 );
-	ui->firstDay->setCurrentIndex( settings.property("FirstDayOfWeek").toInt() - 1 );
+	const QSettings* settings = calManager->getSettings();
+	ui->mouseCross->setChecked( settings->value("MouseCross", false).toBool() );
+	ui->opacity->setValue( settings->value("Opacity", 1.0).toFloat() * 100 );
+	ui->firstDay->setCurrentIndex( settings->value("FirstDayOfWeek", 1).toInt() - 1 );
+	ui->language->setCurrentIndex( languageName.indexOf(settings->value("Language", "zh").toString()) );
 }
 
 void SettingDialog::save()
 {
-	QSettings& settings = calManager->getSettings();
-	settings.setProperty("MouseCross", ui->mouseCross->isChecked());
-	settings.setProperty("Transparent", ui->transparent->value() / 100.0);
-	settings.setProperty("FirstDayOfWeek", ui->firstDay->currentIndex() + 1);
+	QSettings* settings = calManager->getSettings();
+	settings->setValue("MouseCross", ui->mouseCross->isChecked());
+	settings->setValue("Opacity", ui->opacity->value() / 100.0);
+	settings->setValue("FirstDayOfWeek", ui->firstDay->currentIndex() + 1);
+	settings->setValue("Language", languageName[ui->language->currentIndex()]);
+}
+
+void SettingDialog::applyLanguage()
+{
+
 }
 
 void SettingDialog::on_loadButton_clicked()
@@ -49,4 +56,5 @@ void SettingDialog::on_saveButton_clicked()
 void SettingDialog::on_buttonBox_accepted()
 {
 	save();
+	emit changed();
 }

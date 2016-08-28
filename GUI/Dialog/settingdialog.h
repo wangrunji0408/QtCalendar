@@ -18,6 +18,7 @@ public:
 private:
 	void load ();
 	void save ();
+	void applyLanguage ();
 
 private slots:
 	void on_loadButton_clicked();
@@ -30,6 +31,7 @@ signals:
 private:
 	Ui::SettingDialog *ui;
 	ICalManager* calManager;
+	const QVector<QString> languageName = {"zh", "en"};
 };
 
 #endif // SETTINGDIALOG_H

@@ -17,7 +17,7 @@ class Calender : public QWidget
 	Q_OBJECT
 
 public:
-	explicit Calender(QWidget *parent = 0);
+	explicit Calender(QApplication* _app, QWidget *parent = 0);
 	~Calender();
 
 public:
@@ -26,6 +26,7 @@ public:
 	void goToday();
 
 	void dragEnterEvent(QDragEnterEvent *event) override;
+	void changeEvent(QEvent *e) override;
 
 private slots:
 	void on_goTodayButton_clicked();
@@ -42,16 +43,17 @@ public slots:
 private:
 	QDate getFirstDayOfMonth ();
 	void init ();
+	void applyLanguage ();
 
 private:
 	static const int ROW = 6;
 	Ui::Calender *ui;
-	int firstDayOfWeek;	// 1-7
 	int year, month;
 	DayWidget*	dayWidget[ROW][7];
 	QLabel*		weekdayLabel[7];
 	ICalManager* calManager;
 	WindowDragEventFilter windowDrag;
+	QApplication* app;
 };
 
 #endif // CALENDER_H

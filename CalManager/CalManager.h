@@ -12,7 +12,7 @@ public:
 	~CalManager();
 
 private:
-	QSettings settings;
+	QSettings* settings;
 	QMap< QDate, QSet<const CalItem*> > dateToItemSet;
 	QMap< QDate, QColor > dateToColor;
 
@@ -23,7 +23,7 @@ public:
 	virtual void clear() override;
 	virtual void setColor (QDate date, QColor color) override;
 	virtual QColor getColor (QDate date) const override;
-	virtual QSettings& getSettings() override;
+	virtual QSettings* getSettings() override;
 	virtual void save() override;
 	virtual void load() override;
 	virtual bool addFile(QDate, const QString &fileName) override;

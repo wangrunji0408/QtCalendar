@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>278</width>
-    <height>324</height>
+    <height>326</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,6 +55,9 @@
       <string>界面设置</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
       <property name="leftMargin">
        <number>6</number>
       </property>
@@ -72,18 +75,43 @@
         <item>
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>透明度</string>
+           <string>不透明度</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QSlider" name="transparent">
+         <widget class="QSlider" name="opacity">
           <property name="maximum">
            <number>100</number>
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>语言</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="language">
+          <item>
+           <property name="text">
+            <string>中文</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>English</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>

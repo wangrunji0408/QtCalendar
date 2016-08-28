@@ -15,6 +15,7 @@ struct CalFile: public CalOneDayItem
 
 	virtual CalItemType type () const override {return File;};
 	bool copyTo(QDir dir);
+	bool remove ();
 	virtual QVariantMap toVariantMap () const override;
 	virtual void fromVariantMap (QVariantMap const& v) override;
 };

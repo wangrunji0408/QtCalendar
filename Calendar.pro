@@ -63,3 +63,6 @@ CONFIG += c++11
 
 RESOURCES += \
     res.qrc
+
+TRANSLATIONS += Resource/zh.ts \
+                Resource/en.ts

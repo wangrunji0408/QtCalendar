@@ -6,7 +6,9 @@
 
 CalManager::CalManager()
 {
-
+	settings = new QSettings("settings.ini", QSettings::IniFormat);
+	if(!settings->contains("FirstDayOfWeek"))
+		settings->setValue("FirstDayOfWeek", 7);
 }
 
 CalManager::~CalManager()
@@ -25,6 +27,7 @@ void CalManager::delItem(const CalItem *item)
 {
 	for(QDate date: item->getDateList())
 		dateToItemSet[date].remove(item);
+	delete item;
 }
 
 void CalManager::clear()
@@ -48,7 +51,7 @@ QColor CalManager::getColor(QDate date) const
 		return DEFAULT_COLOR_WEEKEND;
 }
 
-QSettings& CalManager::getSettings()
+QSettings *CalManager::getSettings()
 {
 	return settings;
 }
@@ -60,8 +63,6 @@ void CalManager::save()
 	QFile file(fileName);
 	file.open(QFile::WriteOnly);
 	QTextStream(&file) << QJsonDocument::fromVariant(toVariantMap()).toJson();
-
-	settings.sync();
 }
 
 void CalManager::load()
