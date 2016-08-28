@@ -65,6 +65,7 @@ void Calender::applyLanguage()
 	QString langName = calManager->getSettings()->value("Language", "zh").toString();
 	trans->load(langName);
 	app->installTranslator(trans);
+	this->setLocale(langName == "zh"? QLocale::Chinese: QLocale::English);
 }
 
 void Calender::update()
@@ -76,7 +77,9 @@ void Calender::update()
 	{
 		int firstDayOfWeek = calManager->getSettings()->value("FirstDayOfWeek").toInt();
 		int weekday = (firstDayOfWeek-1 + j) % 7 + 1;
-		weekdayLabel[j]->setText(QDate::shortDayName(weekday));
+		QString dayName[] = {"", tr("周一"), tr("周二"),tr("周三"),tr("周四"),tr("周五"),tr("周六"),tr("周日")};
+//		weekdayLabel[j]->setText(QDate::shortDayName(weekday));
+		weekdayLabel[j]->setText(dayName[weekday]);
 	}
 
 	float opacity = calManager->getSettings()->value("Opacity", 1).toFloat();
