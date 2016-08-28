@@ -12,6 +12,7 @@ public:
 	~CalManager();
 
 private:
+	QString dataFileName = "data.txt";
 	QSettings* settings;
 	QMap< QDate, QSet<const CalItem*> > dateToItemSet;
 	QMap< QDate, QColor > dateToColor;
@@ -25,7 +26,9 @@ public:
 	virtual QColor getColor (QDate date) const override;
 	virtual QSettings* getSettings() override;
 	virtual void save() override;
+	virtual void saveTo (const QString &fileName) override;
 	virtual void load() override;
+	virtual void loadFrom (const QString &fileName) override;
 	virtual bool addFile(QDate, const QString &fileName) override;
 	virtual QVector<const CalItem *> getItemListInDate(QDate) const override;
 	virtual QVector<const CalItem *> getItemList(std::function<bool (const CalItem *)> filter = ALWAYS_TRUE) const override;

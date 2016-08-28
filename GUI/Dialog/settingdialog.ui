@@ -166,9 +166,6 @@
       </item>
       <item>
        <widget class="QPushButton" name="importButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
         <property name="text">
          <string>导入</string>
         </property>
@@ -176,9 +173,6 @@
       </item>
       <item>
        <widget class="QPushButton" name="exportButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
         <property name="text">
          <string>导出</string>
         </property>

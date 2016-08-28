@@ -28,7 +28,8 @@ SOURCES += \
     GUI/Calender.cpp \
     GUI/DayInfoWidget.cpp \
     GUI/DayWidget.cpp \
-    main.cpp
+    main.cpp \
+    GUI/EventFilter/mouseignoreeventfilter.cpp
 
 HEADERS  += \
     CalManager/CalItem/calevent.h \
@@ -47,7 +48,8 @@ HEADERS  += \
     GUI/calender.h \
     GUI/DayInfoWidget.h \
     GUI/DayWidget.h \
-    Old/windowdrag.h
+    Old/windowdrag.h \
+    GUI/EventFilter/mouseignoreeventfilter.h
 
 FORMS    += \
     GUI/Dialog/deleventdialog.ui \

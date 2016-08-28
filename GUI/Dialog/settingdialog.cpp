@@ -1,5 +1,6 @@
 #include "settingdialog.h"
 #include "ui_settingdialog.h"
+#include <QFileDialog>
 
 SettingDialog::SettingDialog(ICalManager *_calManager, QWidget *parent) :
 	QDialog(parent),
@@ -56,5 +57,22 @@ void SettingDialog::on_saveButton_clicked()
 void SettingDialog::on_buttonBox_accepted()
 {
 	save();
+	emit changed();
+}
+
+void SettingDialog::on_exportButton_clicked()
+{
+	QString fileName = QFileDialog::getSaveFileName(this, tr("保存文件"),
+								 "",
+								 tr("Text files (*.txt)"));
+	calManager->saveTo(fileName);
+}
+
+void SettingDialog::on_importButton_clicked()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, tr("读取文件"),
+								 "",
+								 tr("Text files (*.txt)"));
+	calManager->loadFrom(fileName);
 	emit changed();
 }

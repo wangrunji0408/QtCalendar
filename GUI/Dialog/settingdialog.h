@@ -25,6 +25,10 @@ private slots:
 	void on_saveButton_clicked();
 	void on_buttonBox_accepted();
 
+	void on_exportButton_clicked();
+
+	void on_importButton_clicked();
+
 signals:
 	void changed ();
 

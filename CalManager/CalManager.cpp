@@ -58,8 +58,12 @@ QSettings *CalManager::getSettings()
 
 void CalManager::save()
 {
-	qDebug() << "CalManager::save";
-	QString fileName = "data.txt";
+	saveTo(dataFileName);
+}
+
+void CalManager::saveTo(const QString &fileName)
+{
+	qDebug() << "CalManager::saveTo:";
 	QFile file(fileName);
 	file.open(QFile::WriteOnly);
 	QTextStream(&file) << QJsonDocument::fromVariant(toVariantMap()).toJson();
@@ -67,8 +71,12 @@ void CalManager::save()
 
 void CalManager::load()
 {
+	loadFrom(dataFileName);
+}
+
+void CalManager::loadFrom(const QString &fileName)
+{
 	qDebug() << "CalManager::load() Begin.";
-	QString fileName = "data.txt";
 	QFile file(fileName);
 	file.open(QFile::ReadOnly);
 	QString jsonStr = QTextStream(&file).readAll();

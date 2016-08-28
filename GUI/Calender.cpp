@@ -9,7 +9,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QTranslator>
-//#include <QEvent>
+#include "EventFilter/mouseignoreeventfilter.h"
 
 Calender::Calender(QApplication *_app, QWidget *parent) :
 	QWidget(parent),
@@ -31,6 +31,8 @@ void Calender::init()
 {
 	setWindowFlags(Qt::FramelessWindowHint);
 	QObject::installEventFilter(&windowDrag);
+//	auto mouseIgnore = new MouseIgnoreEventFilter;
+//	this->installEventFilter(mouseIgnore);
 
 	calManager = new CalManager;
 	applyLanguage();

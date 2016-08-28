@@ -6,7 +6,7 @@
 #include <QDragEnterEvent>
 #include "DayWidget.h"
 #include "../CalManager/CalManager.h"
-#include "EventFilter/windowdrageventfilter.h"
+//#include "EventFilter/windowdrageventfilter.h"
 
 namespace Ui {
 class Calender;
